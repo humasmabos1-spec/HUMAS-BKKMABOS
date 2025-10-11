@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humas & BKK SMK Ma'arif NU Bobotsari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hijau-tua: #006518;
+      --hijau-muda: #00b32d;
+      --putih-lembut: #f8f9fa;
+      --abu-card: #f4f7f5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--putih-lembut);
+      color: var(--hijau-tua);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--hijau-tua), #004d18);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header img { height: 60px; }
+
+    header h1 {
+      flex: 1;
+      text-align: center;
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    nav {
+      background-color: var(--hijau-muda);
+      text-align: center;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      background-color: #004d18;
+      transform: translateY(-2px);
+    }
+
+    /* ==== BANNER FIX ==== */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      background: url('ALUMNI-2025-SMK-MAARIF-NU-BOBOTSARI.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35); /* efek gelap lembut */
+    }
+
+    .banner p {
+      position: relative;
+      z-index: 1;
+      font-size: 2em;
+      font-weight: 600;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: var(--hijau-tua);
+      border-left: 5px solid var(--hijau-muda);
+      padding-left: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: var(--abu-card);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--hijau-tua);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 { color: #004d18; margin-top: 0; }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--hijau-muda);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover { background-color: #00751c; }
+
+    /* --- Section Pengurus --- */
+    .pengurus {
+      text-align: center;
+    }
+
+    .pengurus .anggota {
+      background-color: var(--abu-card);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pengurus .anggota:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .pengurus img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--hijau-tua);
+    }
+
+    .pengurus h4 {
+      color: var(--hijau-tua);
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .pengurus p {
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    footer {
+      background-color: var(--hijau-tua);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.3em; }
+      .banner { height: 200px; font-size: 1.2em; }
+      nav a { display: block; margin: 6px 0; }
+      .container { margin: 20px auto; }
+      .pengurus img { width: 90px; height: 90px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="LP-Maarif.png" alt="Logo LP Ma'arif">
+    <h1>Humas & BKK SMK Ma'arif NU Bobotsari</h1>
+    <img src="SMK.png" alt="Logo SMK Ma'arif NU Bobotsari">
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#info-pt">Informasi Perguruan Tinggi</a>
+    <a href="#lowongan">Lowongan BKK</a>
+    <a href="#pengurus">Struktur Humas dan BKK</a>
+  </nav>
+
+  <div class="banner">
+    <p></p>
+  </div>
+
+  <div class="container">
+    <section id="home">
+      <h2>Selamat Datang di Portal Humas & BKK</h2>
+      <p>Portal resmi untuk siswa SMK Ma'arif NU Bobotsari yang menyediakan informasi seputar perguruan tinggi, beasiswa, dan lowongan kerja. Kami hadir untuk membantu kamu melangkah menuju masa depan yang gemilang 🌱</p>
+    </section>
+
+    <section id="info-pt">
+      <h2>Informasi Pendaftaran Perguruan Tinggi</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>SNBP (Seleksi Berdasarkan Prestasi)</h3>
+          <p>Jalur undangan berdasarkan prestasi akademik & non-akademik. Cocok bagi siswa berprestasi tinggi.</p>
+          <a href="https://portal-snpmb.bppp.kemdikbud.go.id/" class="btn" target="_blank">Daftar SNBP</a>
+        </div>
+        <div class="card">
+          <h3>SNBT (Seleksi Berdasarkan Tes)</h3>
+          <p>Jalur tes UTBK-SNBT untuk masuk perguruan tinggi negeri. Siapkan dirimu mulai sekarang!</p>
+          <a href="https://portal-snpmb.bppp.kemdikbud.go.id/" class="btn" target="_blank">Info SNBT</a>
+        </div>
+        <div class="card">
+          <h3>KIP Kuliah</h3>
+          <p>Beasiswa untuk siswa berprestasi dari keluarga kurang mampu. Cakupan biaya kuliah & biaya hidup.</p>
+          <a href="https://kip-kuliah.kemdiktisaintek.go.id/" class="btn" target="_blank">Info KIP Kuliah</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="lowongan">
+      <h2>Update Lowongan Pekerjaan BKK</h2>
+      <div class="card">
+        <h3>Operator Produksi - PT Chemco Harapan Nusantara</h3>
+        <p>Untuk lulusan SMK Teknik Mesin. Gaji UMR Cikarang. Lokasi: Cikarang.</p>
+        <a href="https://forms.gle/jynpsx7Vvc4EqYuT8" class="btn" target="_blank">Apply Sekarang</a>
+      </div>
+
+      <div class="card">
+        <h3>Seleksi Pendidikan - United Tractor School</h3>
+        <p>Untuk lulusan SMK Teknik Mesin. Lokasi Tes: SMK Ma'arif Sumpiuh.</p>
+        <a href="https://forms.gle/TcZ5QHe9nE45MryH9" class="btn" target="_blank">Apply Sekarang</a>
+      </div>
+    </section>
+
+    <section id="pengurus" class="pengurus">
+      <h2>Struktural Humas dan BKK SMK Ma'arif NU Bobotsari</h2>
+      <div class="grid">
+        <div class="anggota">
+          <img src="BUdi.jpg" alt="WKS. Bid Humas dan Ketua BKK">
+          <h4>Budi, S.Pd</h4>
+          <p>WKS. Bid Humas/Hubin dan Ketua BKK
+                        Contact Person 0812-2746-6276
+          </p>
+        </div>
+        <div class="anggota">
+          <img src="Anita.jpg" alt="Koord. KI, PKL dan Bendahara BKK">
+          <h4>Anita Mujiati, S.Pd</h4>
+          <p>Koord. KI, PKL dan Bendahara BKK
+            Contact Person 0857-9998-5957
+          </p>
+        </div>
+        <div class="anggota">
+          <img src="Iqbal-dia.jpg" alt="Staff Administrasi Humas dan BKK">
+          <h4>Iqbal Dia Rofatul</h4>
+          <p>Staff Administrasi Humas dan BKK
+            Contact Person 0831-3625-2917
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <h2>Kontak Kami</h2>
+      <p>
+        📧 Email: bkkmabos1@gmail.com<br>
+        ☎️ Telepon: 0831-3625-2917 (Admin BKK)<br>
+        📍 Alamat: Jl.Kampung Baru, Dusun III, Gandasuli, Kec.Bobotsari,Kab.Purbalingga,Jawa Tengah<br>
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Humas & BKK SMK Ma'arif NU Bobotsari |</p>
+  </footer>
+</body>
+</html>
