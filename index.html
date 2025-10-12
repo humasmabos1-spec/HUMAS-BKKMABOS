@@ -1,377 +1,914 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Humas & BKK SMK Ma'arif NU Bobotsari</title>
+
+  <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
   <style>
-    :root {
-      --hijau-tua: #006518;
-      --hijau-muda: #00b32d;
-      --putih-lembut: #f8f9fa;
-      --abu-card: #f4f7f5;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--putih-lembut);
-      color: var(--hijau-tua);
-      line-height: 1.6;
-      scroll-padding-top: 80px;
-    }
-
-    header {
-      background: linear-gradient(90deg, var(--hijau-tua), #004d18);
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    header img { height: 60px; }
-
-    header h1 {
-      flex: 1;
-      text-align: center;
-      font-size: 1.8em;
-      margin: 0;
-    }
-
-    nav {
-      background-color: var(--hijau-muda);
-      text-align: center;
-      padding: 12px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 18px;
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-    }
-
-    nav a:hover {
-      background-color: #004d18;
-      transform: translateY(-2px);
-    }
-
-    .banner {
-      position: relative;
-      width: 100%;
-      height: 340px;
-      background: url('ALUMNI-2025-SMK-MAARIF-NU-BOBOTSARI.jpg') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .banner::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.35);
-    }
-
-    .banner p {
-      position: relative;
-      z-index: 1;
-      font-size: 2em;
-      font-weight: 600;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    section {
-      background-color: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      color: var(--hijau-tua);
-      border-left: 5px solid var(--hijau-muda);
-      padding-left: 10px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .card {
-      background-color: var(--abu-card);
-      padding: 20px;
-      border-radius: 10px;
-      border-left: 4px solid var(--hijau-tua);
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .card h3 { color: #004d18; margin-top: 0; }
-
-    .btn {
-      display: inline-block;
-      background-color: var(--hijau-muda);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 10px;
-      transition: background-color 0.2s ease;
-    }
-
-    .btn:hover { background-color: #00751c; }
-
-    .pengurus {
-      text-align: center;
-    }
-
-    .pengurus .anggota {
-      background-color: var(--abu-card);
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pengurus .anggota:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .pengurus img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-      border: 3px solid var(--hijau-tua);
-    }
-
-    .pengurus h4 {
-      color: var(--hijau-tua);
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
-
-    .pengurus p {
-      color: #555;
-      font-size: 0.95em;
-    }
-
-    .contact-link {
-      display: inline-block;
-      margin-top: 8px;
-      background-color: #00b32d;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.85em;
-      transition: all 0.3s ease;
-    }
-
-    .contact-link:hover {
-      background-color: #008a22;
-      transform: translateY(-2px);
-    }
-
-    footer {
-      background-color: var(--hijau-tua);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      header img {
-        height: 50px;
-        margin-bottom: 8px;
-      }
-
-      header h1 {
-        font-size: 1.3em;
-      }
-
-      .banner {
-        height: 200px;
-        font-size: 1.2em;
-        padding: 0 15px;
-      }
-
-      nav {
-        padding: 8px 0;
-      }
-
-      nav a {
-        font-size: 0.85em;
-        padding: 6px 10px;
-        margin: 0 5px;
-      }
-
-      body {
-        scroll-padding-top: 60px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .pengurus img {
-        width: 90px;
-        height: 90px;
-      }
-
-      section {
-        padding: 18px;
-      }
-
-      footer {
-        font-size: 0.8em;
-        padding: 15px;
-      }
-    }
+    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    .divider { height: 1px; background-color: #e6eef0; margin: 3rem 0; }
+    .nav-active { color: #facc15 !important; }
+    /* admin-login modal */
+    .modal-bg { background: rgba(0,0,0,0.45); }
+    /* small helper */
+    .no-select { user-select: none; -webkit-user-select: none; }
+    /* hide admin section by default */
+    #adminPanel { display: none; }
+    /* fit images */
+    .img-cover { object-fit: cover; }
   </style>
 </head>
+<body class="bg-gray-50 text-gray-800">
 
-<body>
-  <header>
-    <img src="LP-Maarif.png" alt="Logo LP Ma'arif">
-    <h1>Humas & BKK SMK Ma'arif NU Bobotsari</h1>
-    <img src="SMK.png" alt="Logo SMK Ma'arif NU Bobotsari">
+  <!-- HEADER -->
+  <header class="bg-green-800 text-white flex items-center justify-between px-6 py-3 shadow-md sticky top-0 z-40">
+    <div class="flex items-center gap-4">
+      <img src="LP-Maarif.png" alt="Logo LP" class="h-10 md:h-12">
+      <div>
+        <h1 class="text-lg md:text-xl font-semibold">Humas & BKK SMK Ma'arif NU Bobotsari</h1>
+        <p class="text-xs opacity-90">Portal Informasi Sekolah & Bursa Kerja Khusus</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a id="btn-admin-open" href="#admin" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full text-sm no-select">Admin</a>
+      <a href="#kontak" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full text-sm no-select">Kontak</a>
+    </div>
   </header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#info-pt">Informasi PT</a>
-    <a href="#lowongan">Lowongan</a>
-    <a href="#pengurus">Struktur Humas dan BKK</a>
+  <!-- NAVBAR -->
+  <nav id="navbar" class="bg-green-600 text-white py-2 z-30 shadow-sm">
+    <ul class="flex flex-wrap justify-center gap-6 font-semibold">
+      <li><a href="#home" class="nav-link hover:text-yellow-200 transition">Home</a></li>
+      <li><a href="#berita" class="nav-link hover:text-yellow-200 transition">Berita</a></li>
+      <li><a href="#info-pt" class="nav-link hover:text-yellow-200 transition">Info PT</a></li>
+      <li><a href="#lowongan" class="nav-link hover:text-yellow-200 transition">Lowongan</a></li>
+      <li><a href="#pengurus" class="nav-link hover:text-yellow-200 transition">Pengurus</a></li>
+      <li><a href="#kontak" class="nav-link hover:text-yellow-200 transition">Kontak</a></li>
+      <li><a href="#admin" class="nav-link hover:text-yellow-200 transition">Dashboard</a></li>
+    </ul>
   </nav>
 
-  <div class="banner">
-    <p></p>
-  </div>
+  <!-- HERO / BANNER -->
+  <section id="home" class="relative h-[320px] md:h-[420px] flex items-center justify-center text-center text-white">
+    <img src="ALUMNI-2025-SMK-MAARIF-NU-BOBOTSARI.jpg" class="absolute inset-0 w-full h-full img-cover" alt="Banner">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative px-6 max-w-3xl" data-aos="zoom-in">
+      <h2 class="text-xl md:text-2xl font-semibold leading-relaxed drop-shadow-md">
+        Terwujudnya sekolah yang kuat, tepercaya, insan berintegritas Ahlussunnah Wal Jama'ah an-Nahdliyah,
+        pembelajar, mumpuni dan berkompetensi serta berterima di masyarakat, Dunia Usaha dan Dunia Industri (DUDI)
+      </h2>
+      <a href="#berita" class="inline-block mt-6 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full font-semibold transition transform hover:scale-105 shadow-md">Lihat Info Terbaru</a>
+    </div>
+  </section>
 
-  <div class="container">
-    <section id="home">
-  <h2>Selamat Datang di Portal Humas & BKK Mabos</h2>
-  <p>Selamat Datang di Portal Resmi Humas & Bursa Kerja Khusus (BKK) SMK Ma’arif NU Bobotsari.  
-  Website ini menjadi sarana informasi resmi yang menyediakan berbagai hal seputar dunia pendidikan dan karier, mulai dari <strong>informasi perguruan tinggi, beasiswa, kegiatan kehumasan, hingga lowongan kerja bagi alumni</strong>.  
-  Kami berharap portal ini dapat menjadi jembatan antara sekolah, peserta didik, alumni, dan dunia industri — untuk bersama membangun generasi Ma’arif yang <strong>berkarakter, mandiri, dan siap bersaing di era modern.</strong> </p>
-</section>
-    <section id="info-pt">
-      <h2>Informasi Pendaftaran Perguruan Tinggi</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>SNBP (Seleksi Berdasarkan Prestasi)</h3>
-          <p>Jalur undangan berdasarkan prestasi akademik & non-akademik. Cocok bagi siswa berprestasi tinggi.</p>
-          <a href="https://portal-snpmb.bppp.kemdikbud.go.id/" class="btn" target="_blank">Daftar SNBP</a>
-        </div>
-        <div class="card">
-          <h3>SNBT (Seleksi Berdasarkan Tes)</h3>
-          <p>Jalur tes UTBK-SNBT untuk masuk perguruan tinggi negeri. Siapkan dirimu mulai sekarang!</p>
-          <a href="https://portal-snpmb.bppp.kemdikbud.go.id/" class="btn" target="_blank">Info SNBT</a>
-        </div>
-        <div class="card">
-          <h3>KIP Kuliah</h3>
-          <p>Beasiswa untuk siswa berprestasi dari keluarga kurang mampu. Cakupan biaya kuliah & biaya hidup.</p>
-          <a href="https://kip-kuliah.kemdiktisaintek.go.id/" class="btn" target="_blank">Info KIP Kuliah</a>
-        </div>
+  <!-- MAIN CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 py-10 space-y-10">
+
+    <!-- BERITA (akan di-render dari JS) -->
+    <section id="berita" data-aos="fade-up">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Berita Terbaru</h2>
+        <button id="btn-add-news-quick" class="hidden md:inline-block bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Tambah Berita</button>
       </div>
+      <div id="newsGrid" class="mt-6 grid md:grid-cols-3 gap-6"></div>
     </section>
 
-    <section id="lowongan">
-      <h2>Update Lowongan Pekerjaan BKK</h2>
-      <div class="card">
-        <h3>Operator Produksi - PT Chemco Harapan Nusantara</h3>
-        <p>Untuk lulusan SMK Teknik Mesin. Gaji mulai Rp5.000.000/bulan. Lokasi: Cikarang dan Karawang.</p>
-        <a href="https://forms.gle/TXQjWWsADQzoygkm8" class="btn" target="_blank">Apply Sekarang</a>
-      </div>
+    <div class="divider"></div>
 
-      <div class="card">
-        <h3>Seleksi Pendidikan - United Tractor School</h3>
-        <p>Untuk lulusan Teknik Mesin. Lokasi Tes: SMK Ma'arif Sumpiuh.</p>
-        <a href="https://forms.gle/m94Zto81Zi47trVd8" class="btn" target="_blank">Apply Sekarang</a>
-      </div>
+    <!-- INFO PT -->
+    <section id="info-pt" data-aos="fade-up">
+      <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Informasi Perguruan Tinggi</h2>
+      <div id="infoPTGrid" class="mt-6 grid md:grid-cols-3 gap-6"></div>
     </section>
 
-    <section id="pengurus" class="pengurus">
-      <h2>Struktural Humas dan BKK SMK Ma'arif NU Bobotsari</h2>
-      <div class="grid">
-        <div class="anggota">
-          <img src="BUdi.jpg" alt="WKS. Bid Humas dan Ketua BKK">
-          <h4>Budi, S.Pd</h4>
-          <p>WKS. Bid Humas dan Ketua BKK</p>
-          <a href="https://wa.me/6281227466276" target="_blank" class="contact-link">📞 Hubungi via WhatsApp</a>
-        </div>
-        <div class="anggota">
-          <img src="Anita.jpg" alt="Koord. KI, PKL dan Bendahara BKK">
-          <h4>Anita Mujiati, S.Pd</h4>
-          <p>Koord. KI, PKL dan Bendahara BKK</p>
-          <a href="https://wa.me/6285799985957" target="_blank" class="contact-link">📞 Hubungi via WhatsApp</a>
-        </div>
-        <div class="anggota">
-          <img src="Iqbal-dia.jpg" alt="Staff Administrasi Humas dan BKK">
-          <h4>Iqbal Dia Rofatul</h4>
-          <p>Staff Administrasi Humas dan BKK</p>
-          <a href="https://wa.me/6283136252917" target="_blank" class="contact-link">📞 Hubungi via WhatsApp</a>
-        </div>
-      </div>
+    <div class="divider"></div>
+
+    <!-- LOWONGAN -->
+    <section id="lowongan" data-aos="fade-up">
+      <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Lowongan Pekerjaan</h2>
+      <div id="jobsGrid" class="mt-6 grid md:grid-cols-2 gap-6"></div>
     </section>
 
-    <section id="kontak">
-      <h2>Kontak Kami</h2>
-      <p>
+    <div class="divider"></div>
+
+    <!-- PENGURUS -->
+    <section id="pengurus" data-aos="fade-up">
+      <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Struktural Humas & BKK</h2>
+      <div id="staffGrid" class="mt-6 grid md:grid-cols-3 gap-6 text-center"></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- KONTAK -->
+    <section id="kontak" data-aos="fade-up">
+      <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Kontak Kami</h2>
+      <p class="text-gray-700 mt-4">
         📧 Email: humasmabos1@gmail.com<br>
-        ☎️ Telepon: 0831-3625-2917(Admin Humas dan BKK)<br>
-        📍 Alamat: Jl.Kampung Baru, Dusun III,Gandasuli,Kec. Bobotsari,Kab. Purbalingga, Jawa Tengah<br>
+        ☎️ Telepon: 0831-3625-2917 (Admin Humas & BKK)<br>
+        📍 Alamat: Jl. Kampung Baru, Dusun III, Gandasuli, Bobotsari, Purbalingga, Jawa Tengah
       </p>
     </section>
+
+  </main>
+
+  <!-- BACK TO TOP -->
+  <button id="toTop" class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 transition hidden">⬆️</button>
+
+  <!-- ADMIN: LOGIN MODAL -->
+  <div id="loginModal" class="fixed inset-0 hidden items-center justify-center modal-bg z-50">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
+      <h3 class="text-lg font-semibold mb-2">Admin Login</h3>
+      <p class="text-sm text-gray-600 mb-4">Masuk untuk mengelola konten situs.</p>
+      <div class="space-y-3">
+        <input id="loginUser" type="text" placeholder="Username" class="w-full border px-3 py-2 rounded-lg" />
+        <input id="loginPass" type="password" placeholder="Password" class="w-full border px-3 py-2 rounded-lg" />
+        <div class="flex items-center justify-between">
+          <button id="loginBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg">Masuk</button>
+          <button id="loginClose" class="text-sm text-gray-500">Batal</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Humas & BKK SMK Ma'arif NU Bobotsari | </p>
-  </footer>
+  <!-- ADMIN PANEL (di bawah, tapi hidden kecuali login) -->
+  <div id="adminPanel" class="fixed inset-0 z-50 bg-white/60 backdrop-blur-sm p-6 overflow-auto">
+    <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden grid md:grid-cols-4">
+      <!-- SIDEBAR -->
+      <aside class="md:col-span-1 bg-white p-6 border-r">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-semibold">IQ</div>
+          <div>
+            <div id="adminName" class="font-semibold">Admin</div>
+            <div class="text-xs text-gray-500">Logged in</div>
+          </div>
+        </div>
+
+        <nav class="space-y-2">
+          <button class="admin-menu w-full text-left px-3 py-2 rounded-lg hover:bg-green-50" data-section="dash">🏠 Dashboard</button>
+          <button class="admin-menu w-full text-left px-3 py-2 rounded-lg hover:bg-green-50" data-section="berita">📰 Kelola Berita</button>
+          <button class="admin-menu w-full text-left px-3 py-2 rounded-lg hover:bg-green-50" data-section="infopt">🎓 Kelola Info PT</button>
+          <button class="admin-menu w-full text-left px-3 py-2 rounded-lg hover:bg-green-50" data-section="lowongan">💼 Kelola Lowongan</button>
+          <button class="admin-menu w-full text-left px-3 py-2 rounded-lg hover:bg-green-50" data-section="pengurus">👥 Kelola Pengurus</button>
+        </nav>
+
+        <div class="mt-6 border-t pt-4">
+          <button id="btnExport" class="w-full bg-green-600 text-white px-3 py-2 rounded-lg mb-2">Export data (JSON)</button>
+          <button id="btnReset" class="w-full bg-red-500 text-white px-3 py-2 rounded-lg mb-2">Reset semua data</button>
+          <button id="btnLogout" class="w-full border px-3 py-2 rounded-lg">Logout</button>
+        </div>
+      </aside>
+
+      <!-- CONTENT -->
+      <div class="md:col-span-3 p-6">
+        <!-- DASHBOARD HOME -->
+        <div id="admin-dash" class="admin-section">
+          <h3 class="text-xl font-semibold mb-4">Dashboard</h3>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-green-50">
+              <div class="text-sm text-gray-600">Jumlah Berita</div>
+              <div id="countNews" class="text-2xl font-semibold text-green-700">0</div>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50">
+              <div class="text-sm text-gray-600">Jumlah Info PT</div>
+              <div id="countInfoPT" class="text-2xl font-semibold text-blue-700">0</div>
+            </div>
+            <div class="p-4 rounded-xl bg-yellow-50">
+              <div class="text-sm text-gray-600">Jumlah Lowongan</div>
+              <div id="countJobs" class="text-2xl font-semibold text-yellow-700">0</div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <h4 class="font-semibold mb-2">Aktivitas Terakhir</h4>
+            <ul id="adminLog" class="text-sm text-gray-600 list-disc pl-5"></ul>
+          </div>
+        </div>
+
+        <!-- KELOLA BERITA -->
+        <div id="admin-berita" class="admin-section hidden">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold">Kelola Berita</h3>
+            <button id="btnNewNews" class="bg-green-600 text-white px-3 py-2 rounded-lg">Tambah Berita</button>
+          </div>
+
+          <!-- Form tambah/edit -->
+          <form id="formNews" class="bg-white border p-4 rounded-lg mb-4 hidden">
+            <input type="hidden" id="newsId" />
+            <div class="grid md:grid-cols-2 gap-3">
+              <input id="newsTitle" placeholder="Judul berita" class="border px-3 py-2 rounded-lg" required />
+              <input id="newsDate" type="date" class="border px-3 py-2 rounded-lg" />
+            </div>
+            <input id="newsImage" placeholder="URL gambar (opsional)" class="border px-3 py-2 rounded-lg mt-3" />
+            <textarea id="newsExcerpt" placeholder="Ringkasan singkat" class="border px-3 py-2 rounded-lg mt-3"></textarea>
+            <textarea id="newsContent" placeholder="Isi lengkap berita (HTML diizinkan)" class="border px-3 py-2 rounded-lg mt-3" rows="6"></textarea>
+
+            <div class="flex gap-2 mt-3">
+              <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Simpan</button>
+              <button type="button" id="btnCancelNews" class="border px-4 py-2 rounded-lg">Batal</button>
+            </div>
+          </form>
+
+          <!-- Daftar berita -->
+          <div id="newsList" class="space-y-3"></div>
+        </div>
+
+        <!-- KELOLA INFO PT -->
+        <div id="admin-infopt" class="admin-section hidden">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold">Kelola Info Perguruan Tinggi</h3>
+            <button id="btnNewInfoPT" class="bg-green-600 text-white px-3 py-2 rounded-lg">Tambah</button>
+          </div>
+
+          <form id="formInfoPT" class="bg-white border p-4 rounded-lg mb-4 hidden">
+            <input type="hidden" id="infoId" />
+            <div class="grid md:grid-cols-2 gap-3">
+              <input id="infoTitle" placeholder="Nama / Judul" class="border px-3 py-2 rounded-lg" required />
+              <input id="infoLink" placeholder="Link pendaftaran / info" class="border px-3 py-2 rounded-lg" />
+            </div>
+            <input id="infoImage" placeholder="URL logo / gambar (opsional)" class="border px-3 py-2 rounded-lg mt-3" />
+            <textarea id="infoExcerpt" placeholder="Deskripsi singkat" class="border px-3 py-2 rounded-lg mt-3"></textarea>
+
+            <div class="flex gap-2 mt-3">
+              <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Simpan</button>
+              <button type="button" id="btnCancelInfo" class="border px-4 py-2 rounded-lg">Batal</button>
+            </div>
+          </form>
+
+          <div id="infoList" class="space-y-3"></div>
+        </div>
+
+        <!-- KELOLA LOWONGAN -->
+        <div id="admin-lowongan" class="admin-section hidden">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold">Kelola Lowongan</h3>
+            <button id="btnNewJob" class="bg-green-600 text-white px-3 py-2 rounded-lg">Tambah Lowongan</button>
+          </div>
+
+          <form id="formJob" class="bg-white border p-4 rounded-lg mb-4 hidden">
+            <input type="hidden" id="jobId" />
+            <div class="grid md:grid-cols-2 gap-3">
+              <input id="jobTitle" placeholder="Judul lowongan" class="border px-3 py-2 rounded-lg" required />
+              <input id="jobCompany" placeholder="Perusahaan" class="border px-3 py-2 rounded-lg" />
+            </div>
+            <input id="jobImage" placeholder="URL logo / gambar (opsional)" class="border px-3 py-2 rounded-lg mt-3" />
+            <input id="jobLink" placeholder="Link apply (opsional)" class="border px-3 py-2 rounded-lg mt-3" />
+            <textarea id="jobExcerpt" placeholder="Deskripsi singkat" class="border px-3 py-2 rounded-lg mt-3"></textarea>
+
+            <div class="flex gap-2 mt-3">
+              <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Simpan</button>
+              <button type="button" id="btnCancelJob" class="border px-4 py-2 rounded-lg">Batal</button>
+            </div>
+          </form>
+
+          <div id="jobList" class="space-y-3"></div>
+        </div>
+
+        <!-- KELOLA PENGURUS -->
+        <div id="admin-pengurus" class="admin-section hidden">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-semibold">Kelola Pengurus</h3>
+            <button id="btnNewStaff" class="bg-green-600 text-white px-3 py-2 rounded-lg">Tambah Pengurus</button>
+          </div>
+
+          <form id="formStaff" class="bg-white border p-4 rounded-lg mb-4 hidden">
+            <input type="hidden" id="staffId" />
+            <div class="grid md:grid-cols-2 gap-3">
+              <input id="staffName" placeholder="Nama lengkap" class="border px-3 py-2 rounded-lg" required />
+              <input id="staffRole" placeholder="Jabatan (mis. Ketua BKK)" class="border px-3 py-2 rounded-lg" />
+            </div>
+            <input id="staffImage" placeholder="URL foto (opsional)" class="border px-3 py-2 rounded-lg mt-3" />
+            <textarea id="staffDesc" placeholder="Deskripsi singkat" class="border px-3 py-2 rounded-lg mt-3"></textarea>
+
+            <div class="flex gap-2 mt-3">
+              <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Simpan</button>
+              <button type="button" id="btnCancelStaff" class="border px-4 py-2 rounded-lg">Batal</button>
+            </div>
+          </form>
+
+          <div id="staffList" class="space-y-3"></div>
+        </div>
+
+      </div> <!-- end content -->
+    </div> <!-- end admin container -->
+  </div> <!-- end adminPanel -->
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+    /* ---------- STORAGE KEYS & DEFAULT DATA ---------- */
+    const LS_KEYS = {
+      news: 'humas_bkk_news_v1',
+      infoPT: 'humas_bkk_infopt_v1',
+      jobs: 'humas_bkk_jobs_v1',
+      staff: 'humas_bkk_staff_v1',
+      logs: 'humas_bkk_logs_v1'
+    };
+
+    // default sample data (3 berita yang kamu minta + example others)
+    const DEFAULT_NEWS = [
+      {
+        id: cryptoId(),
+        title: "SMK Ma'arif NU Bobotsari & BKK LP Ma'arif NU Jateng Jalin MoU dengan PT Formosa Bag Indonesia",
+        date: "2025-10-02",
+        image: "https://source.unsplash.com/800x450/?factory,handshake",
+        excerpt: "Kerjasama ini memperkuat jalur magang dan rekrutmen bagi lulusan SMK.",
+        content: "<p>Penandatanganan MoU dilakukan pada 2 Oktober 2025 di kantor PT Formosa Bag Indonesia. Perwakilan sekolah dan BKK hadir untuk merancang program pelatihan dan penempatan kerja bagi lulusan SMK Ma'arif NU Bobotsari.</p><p>Melalui kemitraan ini, siswa akan mendapat akses magang terstruktur dan peluang rekrutmen yang sesuai kompetensi mereka.</p>"
+      },
+      {
+        id: cryptoId(),
+        title: "Visitasi Industri ke Parklan World Indonesia (PWI Jepara)",
+        date: "2025-10-02",
+        image: "https://source.unsplash.com/800x450/?industry,visit",
+        excerpt: "Kunjungan untuk memperluas wawasan industri siswa dan hubungan magang.",
+        content: "<p>SMK Ma'arif NU Bobotsari bersama BKK LP Ma'arif NU Jateng melakukan visitasi pada 2 Oktober 2025 di Parklan World Indonesia (PWI Jepara). Delegasi menerima paparan proses produksi dan peluang magang.</p>"
+      },
+      {
+        id: cryptoId(),
+        title: "Apel Pagi: Antisipasi Aksi Demo dan Pembinaan Siswa",
+        date: "2025-09-01",
+        image: "https://source.unsplash.com/800x450/?students,school",
+        excerpt: "Apel pagi membahas sikap siswa terhadap isu eksternal agar tidak terprovokasi.",
+        content: "<p>Pada apel pagi 1 September 2025, pihak sekolah memberikan arahan untuk tidak mudah terprovokasi oleh tindakan demo yang berpotensi membahayakan. Kepala Sekolah mengingatkan pentingnya keselamatan dan fokus belajar.</p>"
+      }
+    ];
+
+    const DEFAULT_INFOPT = [
+      { id: cryptoId(), title: "SNBP (Prestasi)", link: "https://portal-snpmb.bppp.kemdikbud.go.id/", image: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png", excerpt: "Jalur undangan berdasarkan prestasi akademik & non-akademik."},
+      { id: cryptoId(), title: "SNBT (Tes)", link: "https://portal-snpmb.bppp.kemdikbud.go.id/", image: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", excerpt: "Jalur tes UTBK-SNBT untuk masuk perguruan tinggi negeri."},
+      { id: cryptoId(), title: "KIP Kuliah", link: "https://kip-kuliah.kemdiktisaintek.go.id/", image: "https://cdn-icons-png.flaticon.com/512/4762/4762314.png", excerpt: "Beasiswa untuk siswa berprestasi dari keluarga kurang mampu."}
+    ];
+
+    const DEFAULT_JOBS = [
+      { id: cryptoId(), title: "Operator Produksi - PT Chemco Harapan Nusantara", company: "PT Chemco", image: "", link: "https://forms.gle/TXQjWWsADQzoygkm8", excerpt: "Untuk lulusan SMK Teknik Mesin. Gaji mulai Rp5.000.000/bulan."},
+      { id: cryptoId(), title: "Seleksi Pendidikan - United Tractor School", company: "United Tractor", image: "", link: "https://forms.gle/m94Zto81Zi47trVd8", excerpt: "Untuk lulusan Teknik Mesin. Lokasi Tes: SMK Ma'arif Sumpiuh."}
+    ];
+
+    const DEFAULT_STAFF = [
+      { id: cryptoId(), name: "Budi, S.Pd", role: "WKS. Bid Humas & Ketua BKK", image: "Budi.jpg", desc: "" },
+      { id: cryptoId(), name: "Anita Mujiati, S.Pd", role: "Koord. KI, PKL & Bendahara BKK", image: "Anita.jpg", desc: "" },
+      { id: cryptoId(), name: "Iqbal Dia Rofatul", role: "Staff Administrasi Humas & BKK", image: "Iqbal-dia.jpg", desc: "" }
+    ];
+
+    /* ---------- HELPER FUNCTIONS ---------- */
+    function cryptoId() {
+      return 'id-' + Math.random().toString(36).slice(2,9);
+    }
+
+    function getLS(key) {
+      const raw = localStorage.getItem(key);
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch(e){ return null; }
+    }
+    function setLS(key, val){
+      localStorage.setItem(key, JSON.stringify(val));
+    }
+
+    function ensureDefaults(){
+      if (!getLS(LS_KEYS.news)) setLS(LS_KEYS.news, DEFAULT_NEWS);
+      if (!getLS(LS_KEYS.infoPT)) setLS(LS_KEYS.infoPT, DEFAULT_INFOPT);
+      if (!getLS(LS_KEYS.jobs)) setLS(LS_KEYS.jobs, DEFAULT_JOBS);
+      if (!getLS(LS_KEYS.staff)) setLS(LS_KEYS.staff, DEFAULT_STAFF);
+      if (!getLS(LS_KEYS.logs)) setLS(LS_KEYS.logs, []);
+    }
+
+    function addLog(text){
+      const logs = getLS(LS_KEYS.logs) || [];
+      logs.unshift({id: cryptoId(), text, t: new Date().toISOString()});
+      setLS(LS_KEYS.logs, logs.slice(0,30));
+      renderAdminLog();
+    }
+
+    /* ---------- RENDER FUNCTIONS (PUBLIC SITE) ---------- */
+    function renderNews(){
+      const news = getLS(LS_KEYS.news) || [];
+      const grid = document.getElementById('newsGrid');
+      grid.innerHTML = '';
+      news.slice().reverse().forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'bg-white rounded-xl shadow hover:shadow-lg transition p-4';
+        card.innerHTML = `
+          <img src="${item.image || 'https://source.unsplash.com/600x400/?students,school'}" alt="${escapeHtml(item.title)}" class="rounded-lg mb-3 w-full h-48 img-cover">
+          <h3 class="text-lg font-semibold text-green-700">${escapeHtml(item.title)}</h3>
+          <p class="text-sm text-gray-600 mt-1">${item.date || ''}</p>
+          <p class="text-sm mt-2 text-gray-700">${escapeHtml(item.excerpt || '')}</p>
+          <details class="mt-3">
+            <summary class="cursor-pointer text-green-600 font-semibold hover:underline">Baca Selengkapnya →</summary>
+            <div class="mt-2 text-sm text-gray-700">${item.content || ''}</div>
+          </details>
+        `;
+        grid.appendChild(card);
+      });
+      document.getElementById('countNews').textContent = news.length;
+    }
+
+    function renderInfoPT(){
+      const arr = getLS(LS_KEYS.infoPT) || [];
+      const grid = document.getElementById('infoPTGrid');
+      grid.innerHTML = '';
+      arr.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition';
+        card.innerHTML = `
+          <img src="${item.image || 'https://source.unsplash.com/160x90/?university'}" class="h-16 mb-3" alt="">
+          <h3 class="text-green-700 font-semibold text-lg">${escapeHtml(item.title)}</h3>
+          <p class="text-sm text-gray-700 mt-2">${escapeHtml(item.excerpt || '')}</p>
+          <a href="${item.link || '#'}" target="_blank" class="inline-block mt-3 text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold">Info</a>
+        `;
+        grid.appendChild(card);
+      });
+      document.getElementById('countInfoPT').textContent = arr.length;
+    }
+
+    function renderJobs(){
+      const arr = getLS(LS_KEYS.jobs) || [];
+      const grid = document.getElementById('jobsGrid');
+      grid.innerHTML = '';
+      arr.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition';
+        card.innerHTML = `
+          <img src="${item.image || 'https://source.unsplash.com/160x90/?office,work'}" class="h-14 mb-3" alt="">
+          <h3 class="text-green-700 font-semibold text-lg">${escapeHtml(item.title)}</h3>
+          <p class="text-sm text-gray-700 mt-2">${escapeHtml(item.excerpt || '')}</p>
+          <a href="${item.link || '#'}" target="_blank" class="inline-block mt-3 text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold">Apply</a>
+        `;
+        grid.appendChild(card);
+      });
+      document.getElementById('countJobs').textContent = arr.length;
+    }
+
+    function renderStaff(){
+      const arr = getLS(LS_KEYS.staff) || [];
+      const grid = document.getElementById('staffGrid');
+      grid.innerHTML = '';
+      arr.forEach(item => {
+        const col = document.createElement('div');
+        col.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition';
+        col.innerHTML = `
+          <img src="${item.image || 'https://source.unsplash.com/200x200/?person'}" class="mx-auto rounded-full h-28 w-28 object-cover border-4 border-green-600 mb-3">
+          <h4 class="text-green-700 font-semibold">${escapeHtml(item.name)}</h4>
+          <p class="text-sm text-gray-700">${escapeHtml(item.role)}</p>
+          <p class="text-sm text-gray-600 mt-2">${escapeHtml(item.desc || '')}</p>
+        `;
+        grid.appendChild(col);
+      });
+    }
+
+    /* ---------- ADMIN RENDER ---------- */
+    function renderAdminLog(){
+      const logs = getLS(LS_KEYS.logs) || [];
+      const ul = document.getElementById('adminLog');
+      ul.innerHTML = logs.map(l => `<li>${escapeHtml(l.text)} <span class="text-xs text-gray-400">· ${new Date(l.t).toLocaleString()}</span></li>`).join('');
+    }
+
+    function renderNewsList(){
+      const arr = getLS(LS_KEYS.news) || [];
+      const list = document.getElementById('newsList');
+      list.innerHTML = arr.slice().reverse().map(item => `
+        <div class="p-3 border rounded-lg flex items-start gap-3">
+          <img src="${item.image || 'https://source.unsplash.com/100x80/?students'}" class="h-20 w-28 object-cover rounded-md">
+          <div class="flex-1">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-semibold">${escapeHtml(item.title)}</div>
+                <div class="text-xs text-gray-500">${item.date || ''}</div>
+              </div>
+              <div class="flex gap-2">
+                <button data-id="${item.id}" class="edit-news text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
+                <button data-id="${item.id}" class="del-news text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(item.excerpt || '')}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderInfoList(){
+      const arr = getLS(LS_KEYS.infoPT) || [];
+      document.getElementById('infoList').innerHTML = arr.slice().reverse().map(i => `
+        <div class="p-3 border rounded-lg flex items-start gap-3">
+          <img src="${i.image || 'https://source.unsplash.com/100x80/?college'}" class="h-16 w-24 object-cover rounded-md">
+          <div class="flex-1">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-semibold">${escapeHtml(i.title)}</div>
+                <div class="text-xs text-gray-500">${i.link || ''}</div>
+              </div>
+              <div class="flex gap-2">
+                <button data-id="${i.id}" class="edit-info text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
+                <button data-id="${i.id}" class="del-info text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.excerpt || '')}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderJobList(){
+      const arr = getLS(LS_KEYS.jobs) || [];
+      document.getElementById('jobList').innerHTML = arr.slice().reverse().map(i => `
+        <div class="p-3 border rounded-lg flex items-start gap-3">
+          <img src="${i.image || 'https://source.unsplash.com/100x80/?office'}" class="h-16 w-24 object-cover rounded-md">
+          <div class="flex-1">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-semibold">${escapeHtml(i.title)}</div>
+                <div class="text-xs text-gray-500">${escapeHtml(i.company || '')}</div>
+              </div>
+              <div class="flex gap-2">
+                <button data-id="${i.id}" class="edit-job text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
+                <button data-id="${i.id}" class="del-job text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.excerpt || '')}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderStaffList(){
+      const arr = getLS(LS_KEYS.staff) || [];
+      document.getElementById('staffList').innerHTML = arr.slice().reverse().map(i => `
+        <div class="p-3 border rounded-lg flex items-start gap-3">
+          <img src="${i.image || 'https://source.unsplash.com/100x100/?person'}" class="h-16 w-16 object-cover rounded-full">
+          <div class="flex-1">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-semibold">${escapeHtml(i.name)}</div>
+                <div class="text-xs text-gray-500">${escapeHtml(i.role || '')}</div>
+              </div>
+              <div class="flex gap-2">
+                <button data-id="${i.id}" class="edit-staff text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
+                <button data-id="${i.id}" class="del-staff text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.desc || '')}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ---------- UTILS ---------- */
+    function escapeHtml(unsafe) {
+      if (!unsafe && unsafe !== 0) return '';
+      return String(unsafe)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'",'&#039;');
+    }
+
+    /* ---------- ADMIN: EVENTS & ACTIONS ---------- */
+    // login logic
+    const ADMIN_ACCOUNT = {user: 'iqbal', pass: 'iqbal123'};
+
+    document.getElementById('btn-admin-open').addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.getElementById('loginModal').classList.remove('hidden');
+      document.getElementById('loginModal').classList.add('flex');
+    });
+    document.getElementById('loginClose').addEventListener('click', ()=> hideLogin());
+    function hideLogin(){ document.getElementById('loginModal').classList.add('hidden'); document.getElementById('loginModal').classList.remove('flex'); }
+
+    document.getElementById('loginBtn').addEventListener('click', ()=>{
+      const u = document.getElementById('loginUser').value.trim();
+      const p = document.getElementById('loginPass').value.trim();
+      if(u === ADMIN_ACCOUNT.user && p === ADMIN_ACCOUNT.pass){
+        hideLogin();
+        openAdmin();
+        addLog('Admin logged in');
+      } else {
+        alert('Username atau password salah.');
+      }
+    });
+
+    function openAdmin(){
+      document.getElementById('adminPanel').style.display = 'block';
+      document.getElementById('adminName').textContent = ADMIN_ACCOUNT.user;
+      showAdminSection('dash');
+      renderAllAdmin();
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    document.getElementById('btnLogout').addEventListener('click', () => {
+      document.getElementById('adminPanel').style.display = 'none';
+      addLog('Admin logged out');
+    });
+
+    // sidebar menu
+    document.querySelectorAll('.admin-menu').forEach(btn=>{
+      btn.addEventListener('click', ()=> {
+        const s = btn.getAttribute('data-section');
+        showAdminSection(s);
+      });
+    });
+
+    function showAdminSection(section){
+      document.querySelectorAll('.admin-section').forEach(el=> el.classList.add('hidden'));
+      document.getElementById('admin-dash').classList.add('hidden');
+      document.getElementById('admin-berita').classList.add('hidden');
+      document.getElementById('admin-infopt').classList.add('hidden');
+      document.getElementById('admin-lowongan').classList.add('hidden');
+      document.getElementById('admin-pengurus').classList.add('hidden');
+      if(section === 'dash') document.getElementById('admin-dash').classList.remove('hidden');
+      if(section === 'berita') document.getElementById('admin-berita').classList.remove('hidden');
+      if(section === 'infopt') document.getElementById('admin-infopt').classList.remove('hidden');
+      if(section === 'lowongan') document.getElementById('admin-lowongan').classList.remove('hidden');
+      if(section === 'pengurus') document.getElementById('admin-pengurus').classList.remove('hidden');
+    }
+
+    // render all admin lists
+    function renderAllAdmin(){
+      renderNewsList(); renderInfoList(); renderJobList(); renderStaffList(); renderAdminLog();
+      // also update frontpage
+      renderNews(); renderInfoPT(); renderJobs(); renderStaff();
+      // attach admin handlers
+      attachAdminHandlers();
+    }
+
+    // NEW / EDIT / DELETE handlers for news
+    document.getElementById('btnNewNews').addEventListener('click', ()=> {
+      document.getElementById('formNews').classList.remove('hidden');
+      document.getElementById('newsId').value = '';
+      document.getElementById('newsTitle').value = '';
+      document.getElementById('newsDate').value = new Date().toISOString().slice(0,10);
+      document.getElementById('newsImage').value = '';
+      document.getElementById('newsExcerpt').value = '';
+      document.getElementById('newsContent').value = '';
+    });
+    document.getElementById('btnCancelNews').addEventListener('click', ()=> document.getElementById('formNews').classList.add('hidden'));
+
+    document.getElementById('formNews').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const id = document.getElementById('newsId').value || cryptoId();
+      const title = document.getElementById('newsTitle').value.trim();
+      const date = document.getElementById('newsDate').value || '';
+      const image = document.getElementById('newsImage').value.trim();
+      const excerpt = document.getElementById('newsExcerpt').value.trim();
+      const content = document.getElementById('newsContent').value.trim();
+      let arr = getLS(LS_KEYS.news) || [];
+      const obj = { id, title, date, image, excerpt, content };
+      const exists = arr.find(i=>i.id===id);
+      if(exists){
+        arr = arr.map(i=> i.id===id ? obj : i);
+        addLog('Edit berita: ' + title);
+      } else {
+        arr.push(obj);
+        addLog('Tambah berita: ' + title);
+      }
+      setLS(LS_KEYS.news, arr);
+      document.getElementById('formNews').classList.add('hidden');
+      renderAllAdmin();
+    });
+
+    function attachAdminHandlers(){
+      // edit news
+      document.querySelectorAll('.edit-news').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          const id = btn.getAttribute('data-id');
+          const arr = getLS(LS_KEYS.news) || [];
+          const item = arr.find(i=>i.id===id);
+          if(!item) return;
+          document.getElementById('formNews').classList.remove('hidden');
+          document.getElementById('newsId').value = item.id;
+          document.getElementById('newsTitle').value = item.title;
+          document.getElementById('newsDate').value = item.date || '';
+          document.getElementById('newsImage').value = item.image || '';
+          document.getElementById('newsExcerpt').value = item.excerpt || '';
+          document.getElementById('newsContent').value = item.content || '';
+        });
+      });
+      // delete news
+      document.querySelectorAll('.del-news').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          if(!confirm('Hapus berita ini?')) return;
+          const id = btn.getAttribute('data-id');
+          let arr = getLS(LS_KEYS.news) || [];
+          const item = arr.find(i=>i.id===id);
+          arr = arr.filter(i=>i.id!==id);
+          setLS(LS_KEYS.news, arr);
+          addLog('Hapus berita: ' + (item ? item.title : id));
+          renderAllAdmin();
+        });
+      });
+
+      // INFO PT Handlers
+      document.getElementById('btnNewInfoPT').addEventListener('click', ()=> {
+        document.getElementById('formInfoPT').classList.remove('hidden');
+        document.getElementById('infoId').value=''; document.getElementById('infoTitle').value=''; document.getElementById('infoLink').value=''; document.getElementById('infoImage').value=''; document.getElementById('infoExcerpt').value='';
+      });
+      document.getElementById('btnCancelInfo').addEventListener('click', ()=> document.getElementById('formInfoPT').classList.add('hidden'));
+      document.getElementById('formInfoPT').addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const id = document.getElementById('infoId').value || cryptoId();
+        const title = document.getElementById('infoTitle').value.trim();
+        const link = document.getElementById('infoLink').value.trim();
+        const image = document.getElementById('infoImage').value.trim();
+        const excerpt = document.getElementById('infoExcerpt').value.trim();
+        let arr = getLS(LS_KEYS.infoPT) || [];
+        const obj = { id, title, link, image, excerpt };
+        if(arr.find(i=>i.id===id)) arr = arr.map(i=> i.id===id ? obj : i);
+        else arr.push(obj);
+        setLS(LS_KEYS.infoPT, arr);
+        addLog('Simpan Info PT: ' + title);
+        document.getElementById('formInfoPT').classList.add('hidden');
+        renderAllAdmin();
+      });
+
+      // edit/del info
+      document.querySelectorAll('.edit-info').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const id = btn.getAttribute('data-id'); const arr = getLS(LS_KEYS.infoPT)||[]; const it = arr.find(i=>i.id===id);
+          if(!it) return;
+          document.getElementById('formInfoPT').classList.remove('hidden');
+          document.getElementById('infoId').value = it.id;
+          document.getElementById('infoTitle').value = it.title;
+          document.getElementById('infoLink').value = it.link || '';
+          document.getElementById('infoImage').value = it.image || '';
+          document.getElementById('infoExcerpt').value = it.excerpt || '';
+        });
+      });
+      document.querySelectorAll('.del-info').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          if(!confirm('Hapus info PT ini?')) return;
+          const id = btn.getAttribute('data-id');
+          let arr = getLS(LS_KEYS.infoPT) || [];
+          const it = arr.find(i=>i.id===id);
+          arr = arr.filter(i=>i.id!==id);
+          setLS(LS_KEYS.infoPT, arr);
+          addLog('Hapus Info PT: '+ (it ? it.title : id));
+          renderAllAdmin();
+        });
+      });
+
+      // JOB handlers
+      document.getElementById('btnNewJob').addEventListener('click', ()=> {
+        document.getElementById('formJob').classList.remove('hidden');
+        document.getElementById('jobId').value=''; document.getElementById('jobTitle').value=''; document.getElementById('jobCompany').value=''; document.getElementById('jobImage').value=''; document.getElementById('jobLink').value=''; document.getElementById('jobExcerpt').value='';
+      });
+      document.getElementById('btnCancelJob').addEventListener('click', ()=> document.getElementById('formJob').classList.add('hidden'));
+      document.getElementById('formJob').addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const id = document.getElementById('jobId').value || cryptoId();
+        const title = document.getElementById('jobTitle').value.trim();
+        const company = document.getElementById('jobCompany').value.trim();
+        const image = document.getElementById('jobImage').value.trim();
+        const link = document.getElementById('jobLink').value.trim();
+        const excerpt = document.getElementById('jobExcerpt').value.trim();
+        let arr = getLS(LS_KEYS.jobs) || [];
+        const obj = { id, title, company, image, link, excerpt };
+        if(arr.find(i=>i.id===id)) arr = arr.map(i=> i.id===id ? obj : i);
+        else arr.push(obj);
+        setLS(LS_KEYS.jobs, arr);
+        addLog('Simpan lowongan: ' + title);
+        document.getElementById('formJob').classList.add('hidden');
+        renderAllAdmin();
+      });
+      document.querySelectorAll('.edit-job').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const id = btn.getAttribute('data-id'); const arr = getLS(LS_KEYS.jobs)||[]; const it = arr.find(i=>i.id===id);
+          if(!it) return;
+          document.getElementById('formJob').classList.remove('hidden');
+          document.getElementById('jobId').value = it.id;
+          document.getElementById('jobTitle').value = it.title;
+          document.getElementById('jobCompany').value = it.company || '';
+          document.getElementById('jobImage').value = it.image || '';
+          document.getElementById('jobLink').value = it.link || '';
+          document.getElementById('jobExcerpt').value = it.excerpt || '';
+        });
+      });
+      document.querySelectorAll('.del-job').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          if(!confirm('Hapus lowongan ini?')) return;
+          const id = btn.getAttribute('data-id');
+          let arr = getLS(LS_KEYS.jobs) || [];
+          const it = arr.find(i=>i.id===id);
+          arr = arr.filter(i=>i.id!==id);
+          setLS(LS_KEYS.jobs, arr);
+          addLog('Hapus lowongan: '+ (it ? it.title : id));
+          renderAllAdmin();
+        });
+      });
+
+      // STAFF handlers
+      document.getElementById('btnNewStaff').addEventListener('click', ()=> {
+        document.getElementById('formStaff').classList.remove('hidden');
+        document.getElementById('staffId').value=''; document.getElementById('staffName').value=''; document.getElementById('staffRole').value=''; document.getElementById('staffImage').value=''; document.getElementById('staffDesc').value='';
+      });
+      document.getElementById('btnCancelStaff').addEventListener('click', ()=> document.getElementById('formStaff').classList.add('hidden'));
+      document.getElementById('formStaff').addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const id = document.getElementById('staffId').value || cryptoId();
+        const name = document.getElementById('staffName').value.trim();
+        const role = document.getElementById('staffRole').value.trim();
+        const image = document.getElementById('staffImage').value.trim();
+        const desc = document.getElementById('staffDesc').value.trim();
+        let arr = getLS(LS_KEYS.staff) || [];
+        const obj = { id, name, role, image, desc };
+        if(arr.find(i=>i.id===id)) arr = arr.map(i=> i.id===id ? obj : i);
+        else arr.push(obj);
+        setLS(LS_KEYS.staff, arr);
+        addLog('Simpan pengurus: ' + name);
+        document.getElementById('formStaff').classList.add('hidden');
+        renderAllAdmin();
+      });
+      document.querySelectorAll('.edit-staff').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const id = btn.getAttribute('data-id'); const arr = getLS(LS_KEYS.staff)||[]; const it = arr.find(i=>i.id===id);
+          if(!it) return;
+          document.getElementById('formStaff').classList.remove('hidden');
+          document.getElementById('staffId').value = it.id;
+          document.getElementById('staffName').value = it.name || '';
+          document.getElementById('staffRole').value = it.role || '';
+          document.getElementById('staffImage').value = it.image || '';
+          document.getElementById('staffDesc').value = it.desc || '';
+        });
+      });
+      document.querySelectorAll('.del-staff').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          if(!confirm('Hapus pengurus ini?')) return;
+          const id = btn.getAttribute('data-id');
+          let arr = getLS(LS_KEYS.staff) || [];
+          const it = arr.find(i=>i.id===id);
+          arr = arr.filter(i=>i.id!==id);
+          setLS(LS_KEYS.staff, arr);
+          addLog('Hapus pengurus: '+ (it ? it.name : id));
+          renderAllAdmin();
+        });
+      });
+
+      // export & reset
+      document.getElementById('btnExport').addEventListener('click', ()=>{
+        const data = {
+          news: getLS(LS_KEYS.news) || [],
+          infoPT: getLS(LS_KEYS.infoPT) || [],
+          jobs: getLS(LS_KEYS.jobs) || [],
+          staff: getLS(LS_KEYS.staff) || []
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'humas-bkk-data.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+        addLog('Export data JSON');
+      });
+
+      document.getElementById('btnReset').addEventListener('click', ()=>{
+        if(!confirm('Reset semua data ke default?')) return;
+        localStorage.removeItem(LS_KEYS.news); localStorage.removeItem(LS_KEYS.infoPT); localStorage.removeItem(LS_KEYS.jobs); localStorage.removeItem(LS_KEYS.staff);
+        ensureDefaults(); addLog('Reset data ke default');
+        renderAllAdmin();
+      });
+    } // end attachAdminHandlers
+
+    /* ---------- NAVBAR active on scroll & back to top ---------- */
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+    window.addEventListener("scroll", () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 140;
+        if (scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('nav-active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('nav-active');
+      });
+
+      // back to top
+      const toTop = document.getElementById('toTop');
+      if (window.scrollY > 500) toTop.classList.remove('hidden'); else toTop.classList.add('hidden');
+    });
+
+    document.getElementById('toTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    /* ---------- INITIALIZE ---------- */
+    ensureDefaults();
+    renderAllAdmin();
+
+    // quick-add news button on page (will open admin form if logged in)
+    document.getElementById('btn-add-news-quick').addEventListener('click', ()=>{
+      if(document.getElementById('adminPanel').style.display === 'block') {
+        showAdminSection('berita');
+        document.getElementById('btnNewNews').click();
+      } else {
+        alert('Silakan masuk sebagai admin untuk menambah berita.');
+      }
+    });
+
+  </script>
 </body>
 </html>
-
