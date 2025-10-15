@@ -8,35 +8,66 @@
   <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />\n  <link rel="icon" href="SMK.png" type="image/png">
 
   <style>
     body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
     .divider { height: 1px; background-color: #e6eef0; margin: 3rem 0; }
     .nav-active { color: #facc15 !important; }
-    /* admin-login modal */
     .modal-bg { background: rgba(0,0,0,0.45); }
-    /* small helper */
     .no-select { user-select: none; -webkit-user-select: none; }
-    /* hide admin section by default */
     #adminPanel { display: none; }
-    /* fit images */
     .img-cover { object-fit: cover; }
+    /* Mobile tweaks */
+    /* 🌿 MOBILE OPTIMIZATION */
+    @media (max-width: 640px) {
+      header { flex-wrap: wrap; padding: 0.5rem 1rem; }
+      header img { height: 32px; }
+      header h1 { font-size: 14px; }
+      header p { font-size: 11px; }
+      nav ul { gap: 0.75rem; }
+      .nav-link { font-size: 13px; }
+      #home { height: 180px; }
+      #home h2 { font-size: 13px; line-height: 1.4; }
+      .max-w-3xl { max-width: 92%; }
+      .p-6 { padding: 0.75rem; }
+      section h2 { font-size: 18px; }
+      .card-img { height: 9rem; }
+      .rounded-circle { width: 80px; height: 80px; }
+      #kontak p { font-size: 13px; line-height: 1.5; }
+    }
+      header img { height: 36px; }
+      #home h2 { font-size: 16px; }
+      .max-w-3xl { max-width: 94%; }
+      .nav-link { font-size: 14px; }
+      .img-cover { object-position: center; }
+      /* Reduce hero height on small screens */
+      #home { height: 260px; }
+      /* tighter paddings */
+      .p-6 { padding: 0.75rem; }
+    }
+    /* Ensure images in cards keep proportions and don't overflow */
+    .card-img { width: 100%; height: 12rem; object-fit: cover; border-radius: 0.5rem; }
+    .rounded-circle { border-radius: 9999px; object-fit: cover; }
+    /* Admin modal vertical scroll on small screens */
+    #adminPanel .max-w-6xl { max-width: 98%; margin: 1rem; }
+    /* Make export/import buttons inline on mobile */
+    .admin-actions { display:flex; gap:0.5rem; flex-wrap:wrap; }
   </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- HEADER -->
   <header class="bg-green-800 text-white flex items-center justify-between px-6 py-3 shadow-md sticky top-0 z-40">
-    <div class="flex items-center gap-4">
-      <img src="LP-Maarif.png" alt="Logo LP" class="h-10 md:h-12">
+    <div class="flex items-center gap-3">
+      <img src="SMK.png" alt="Logo SMK" class="h-10 md:h-12">
       <div>
         <h1 class="text-lg md:text-xl font-semibold">Humas & BKK SMK Ma'arif NU Bobotsari</h1>
         <p class="text-xs opacity-90">Portal Informasi Sekolah & Bursa Kerja Khusus</p>
       </div>
     </div>
-
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-3">
       <a id="btn-admin-open" href="#admin" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full text-sm no-select">Admin</a>
       <a href="#kontak" class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full text-sm no-select">Kontak</a>
     </div>
@@ -44,13 +75,12 @@
 
   <!-- NAVBAR -->
   <nav id="navbar" class="bg-green-600 text-white py-2 z-30 shadow-sm">
-    <ul class="flex flex-wrap justify-center gap-6 font-semibold">
+    <ul class="flex flex-wrap justify-center gap-6 font-semibold px-3">
       <li><a href="#home" class="nav-link hover:text-yellow-200 transition">Home</a></li>
       <li><a href="#berita" class="nav-link hover:text-yellow-200 transition">Berita</a></li>
-      <li><a href="#info-pt" class="nav-link hover:text-yellow-200 transition">Info PT</a></li>
-      <li><a href="#lowongan" class="nav-link hover:text-yellow-200 transition">Lowongan</a></li>
+      <li><a href="#info-pt" class="nav-link hover:text-yellow-200 transition">Info Perguruan Tinggi</a></li>
+      <li><a href="#lowongan-BKK" class="nav-link hover:text-yellow-200 transition">Lowongan BKK</a></li>
       <li><a href="#pengurus" class="nav-link hover:text-yellow-200 transition">Pengurus</a></li>
-      <li><a href="#kontak" class="nav-link hover:text-yellow-200 transition">Kontak</a></li>
       <li><a href="#admin" class="nav-link hover:text-yellow-200 transition">Dashboard</a></li>
     </ul>
   </nav>
@@ -60,24 +90,24 @@
     <img src="ALUMNI-2025-SMK-MAARIF-NU-BOBOTSARI.jpg" class="absolute inset-0 w-full h-full img-cover" alt="Banner">
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="relative px-6 max-w-3xl" data-aos="zoom-in">
-      <h2 class="text-xl md:text-2xl font-semibold leading-relaxed drop-shadow-md">
+      <h2 class="text-xl md:text-2xl font-semibold leading-relaxed drop-shadow-md" id="heroText">
         Terwujudnya sekolah yang kuat, tepercaya, insan berintegritas Ahlussunnah Wal Jama'ah an-Nahdliyah,
         pembelajar, mumpuni dan berkompetensi serta berterima di masyarakat, Dunia Usaha dan Dunia Industri (DUDI)
       </h2>
-      <a href="#berita" class="inline-block mt-6 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full font-semibold transition transform hover:scale-105 shadow-md">Lihat Info Terbaru</a>
+      <a href="#berita" class="inline-block mt-4 md:mt-6 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full font-semibold transition transform hover:scale-105 shadow-md">Lihat Info Terbaru</a>
     </div>
   </section>
 
   <!-- MAIN CONTENT -->
-  <main class="max-w-7xl mx-auto px-4 py-10 space-y-10">
+  <main class="max-w-7xl mx-auto px-4 py-8 md:py-10 space-y-10">
 
-    <!-- BERITA (akan di-render dari JS) -->
+    <!-- BERITA -->
     <section id="berita" data-aos="fade-up">
       <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Berita Terbaru</h2>
         <button id="btn-add-news-quick" class="hidden md:inline-block bg-green-600 text-white px-3 py-1 rounded-lg text-sm">Tambah Berita</button>
       </div>
-      <div id="newsGrid" class="mt-6 grid md:grid-cols-3 gap-6"></div>
+      <div id="newsGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
     </section>
 
     <div class="divider"></div>
@@ -85,7 +115,7 @@
     <!-- INFO PT -->
     <section id="info-pt" data-aos="fade-up">
       <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Informasi Perguruan Tinggi</h2>
-      <div id="infoPTGrid" class="mt-6 grid md:grid-cols-3 gap-6"></div>
+      <div id="infoPTGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
     </section>
 
     <div class="divider"></div>
@@ -93,7 +123,7 @@
     <!-- LOWONGAN -->
     <section id="lowongan" data-aos="fade-up">
       <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Lowongan Pekerjaan</h2>
-      <div id="jobsGrid" class="mt-6 grid md:grid-cols-2 gap-6"></div>
+      <div id="jobsGrid" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6"></div>
     </section>
 
     <div class="divider"></div>
@@ -101,7 +131,7 @@
     <!-- PENGURUS -->
     <section id="pengurus" data-aos="fade-up">
       <h2 class="text-2xl font-bold text-green-800 border-l-4 border-green-500 pl-3">Struktural Humas & BKK</h2>
-      <div id="staffGrid" class="mt-6 grid md:grid-cols-3 gap-6 text-center"></div>
+      <div id="staffGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center"></div>
     </section>
 
     <div class="divider"></div>
@@ -137,12 +167,12 @@
     </div>
   </div>
 
-  <!-- ADMIN PANEL (di bawah, tapi hidden kecuali login) -->
+  <!-- ADMIN PANEL (hidden kecuali login) -->
   <div id="adminPanel" class="fixed inset-0 z-50 bg-white/60 backdrop-blur-sm p-6 overflow-auto">
     <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden grid md:grid-cols-4">
       <!-- SIDEBAR -->
       <aside class="md:col-span-1 bg-white p-6 border-r">
-        <div class="flex items-center gap-3 mb-6">
+        <div class="flex items-center gap-3 mb-4">
           <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-semibold">IQ</div>
           <div>
             <div id="adminName" class="font-semibold">Admin</div>
@@ -158,9 +188,11 @@
           <button class="admin-menu w-full text-left px-3 py-2 rounded-lg hover:bg-green-50" data-section="pengurus">👥 Kelola Pengurus</button>
         </nav>
 
-        <div class="mt-6 border-t pt-4">
+        <div class="mt-6 border-t pt-4 admin-actions">
           <button id="btnExport" class="w-full bg-green-600 text-white px-3 py-2 rounded-lg mb-2">Export data (JSON)</button>
-          <button id="btnReset" class="w-full bg-red-500 text-white px-3 py-2 rounded-lg mb-2">Reset semua data</button>
+          <label for="importFile" class="w-full bg-blue-600 text-white px-3 py-2 rounded-lg mb-2 text-center cursor-pointer">Import data (JSON)</label>
+          <input type="file" id="importFile" accept=".json" style="display:none">
+          <button id="btnReset" class="w-full bg-red-500 text-white px-3 py-2 rounded-lg mb-2">Reset ke default</button>
           <button id="btnLogout" class="w-full border px-3 py-2 rounded-lg">Logout</button>
         </div>
       </aside>
@@ -184,7 +216,6 @@
               <div id="countJobs" class="text-2xl font-semibold text-yellow-700">0</div>
             </div>
           </div>
-
           <div class="mt-6">
             <h4 class="font-semibold mb-2">Aktivitas Terakhir</h4>
             <ul id="adminLog" class="text-sm text-gray-600 list-disc pl-5"></ul>
@@ -195,7 +226,10 @@
         <div id="admin-berita" class="admin-section hidden">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-xl font-semibold">Kelola Berita</h3>
-            <button id="btnNewNews" class="bg-green-600 text-white px-3 py-2 rounded-lg">Tambah Berita</button>
+            <div class="flex gap-2">
+              <button id="btnNewNews" class="bg-green-600 text-white px-3 py-2 rounded-lg">Tambah Berita</button>
+              <button id="btnCloseNewsPanel" class="text-sm px-3 py-2 rounded-lg border">Tutup</button>
+            </div>
           </div>
 
           <!-- Form tambah/edit -->
@@ -284,6 +318,7 @@
               <input id="staffRole" placeholder="Jabatan (mis. Ketua BKK)" class="border px-3 py-2 rounded-lg" />
             </div>
             <input id="staffImage" placeholder="URL foto (opsional)" class="border px-3 py-2 rounded-lg mt-3" />
+            <input id="staffWA" placeholder="Nomor WhatsApp (contoh: 6281234567890)" class="border px-3 py-2 rounded-lg mt-3" />
             <textarea id="staffDesc" placeholder="Deskripsi singkat" class="border px-3 py-2 rounded-lg mt-3"></textarea>
 
             <div class="flex gap-2 mt-3">
@@ -302,9 +337,9 @@
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 900, once: true });
+    AOS.init({ duration: 700, once: true });
 
-    /* ---------- STORAGE KEYS & DEFAULT DATA ---------- */
+    /* ---------- STORAGE KEYS & DEFAULT DATA (menggunakan data lama kamu) ---------- */
     const LS_KEYS = {
       news: 'humas_bkk_news_v1',
       infoPT: 'humas_bkk_infopt_v1',
@@ -313,7 +348,7 @@
       logs: 'humas_bkk_logs_v1'
     };
 
-    // default sample data (3 berita yang kamu minta + example others)
+    // Default data (saya masukkan data contoh dari kode lamamu)
     const DEFAULT_NEWS = [
       {
         id: cryptoId(),
@@ -321,7 +356,8 @@
         date: "2025-10-02",
         image: "https://source.unsplash.com/800x450/?factory,handshake",
         excerpt: "Kerjasama ini memperkuat jalur magang dan rekrutmen bagi lulusan SMK.",
-        content: "<p>Penandatanganan MoU dilakukan pada 2 Oktober 2025 di kantor PT Formosa Bag Indonesia. Perwakilan sekolah dan BKK hadir untuk merancang program pelatihan dan penempatan kerja bagi lulusan SMK Ma'arif NU Bobotsari.</p><p>Melalui kemitraan ini, siswa akan mendapat akses magang terstruktur dan peluang rekrutmen yang sesuai kompetensi mereka.</p>"
+        content: "<p>Penandatanganan MoU dilakukan pada 2 Oktober 2025 di kantor PT Formosa Bag Indonesia. Perwakilan sekolah dan BKK hadir untuk merancang program pelatihan dan penempatan kerja bagi lulusan SMK Ma'arif NU Bobotsari.</p><p>Melalui kemitraan ini, siswa akan mendapat akses magang terstruktur dan peluang rekrutmen yang sesuai kompetensi mereka.</p>",
+        ts: Date.now() - (1000*60*60*24*10) // contoh timestamp
       },
       {
         id: cryptoId(),
@@ -329,7 +365,8 @@
         date: "2025-10-02",
         image: "https://source.unsplash.com/800x450/?industry,visit",
         excerpt: "Kunjungan untuk memperluas wawasan industri siswa dan hubungan magang.",
-        content: "<p>SMK Ma'arif NU Bobotsari bersama BKK LP Ma'arif NU Jateng melakukan visitasi pada 2 Oktober 2025 di Parklan World Indonesia (PWI Jepara). Delegasi menerima paparan proses produksi dan peluang magang.</p>"
+        content: "<p>SMK Ma'arif NU Bobotsari bersama BKK LP Ma'arif NU Jateng melakukan visitasi pada 2 Oktober 2025 di Parklan World Indonesia (PWI Jepara). Delegasi menerima paparan proses produksi dan peluang magang.</p>",
+        ts: Date.now() - (1000*60*60*24*8)
       },
       {
         id: cryptoId(),
@@ -337,7 +374,8 @@
         date: "2025-09-01",
         image: "https://source.unsplash.com/800x450/?students,school",
         excerpt: "Apel pagi membahas sikap siswa terhadap isu eksternal agar tidak terprovokasi.",
-        content: "<p>Pada apel pagi 1 September 2025, pihak sekolah memberikan arahan untuk tidak mudah terprovokasi oleh tindakan demo yang berpotensi membahayakan. Kepala Sekolah mengingatkan pentingnya keselamatan dan fokus belajar.</p>"
+        content: "<p>Pada apel pagi 1 September 2025, pihak sekolah memberikan arahan untuk tidak mudah terprovokasi oleh tindakan demo yang berpotensi membahayakan. Kepala Sekolah mengingatkan pentingnya keselamatan dan fokus belajar.</p>",
+        ts: Date.now() - (1000*60*60*24*30)
       }
     ];
 
@@ -353,75 +391,68 @@
     ];
 
     const DEFAULT_STAFF = [
-      { id: cryptoId(), name: "Budi, S.Pd", role: "WKS. Bid Humas & Ketua BKK", image: "Budi.jpg", desc: "" },
-      { id: cryptoId(), name: "Anita Mujiati, S.Pd", role: "Koord. KI, PKL & Bendahara BKK", image: "Anita.jpg", desc: "" },
-      { id: cryptoId(), name: "Iqbal Dia Rofatul", role: "Staff Administrasi Humas & BKK", image: "Iqbal-dia.jpg", desc: "" }
+      { id: cryptoId(), name: "Budi, S.Pd", role: "WKS. Bid Humas & Ketua BKK", image: "Budi.jpg", desc: "", wa: "" },
+      { id: cryptoId(), name: "Anita Mujiati, S.Pd", role: "Koord. KI, PKL & Bendahara BKK", image: "Anita.jpg", desc: "", wa: "" },
+      { id: cryptoId(), name: "Iqbal Dia Rofatul", role: "Staff Administrasi Humas & BKK", image: "Iqbal-dia.jpg", desc: "", wa: "" }
     ];
 
-    /* ---------- HELPER FUNCTIONS ---------- */
-    function cryptoId() {
-      return 'id-' + Math.random().toString(36).slice(2,9);
-    }
-
-    function getLS(key) {
-      const raw = localStorage.getItem(key);
-      if (!raw) return null;
-      try { return JSON.parse(raw); } catch(e){ return null; }
-    }
-    function setLS(key, val){
-      localStorage.setItem(key, JSON.stringify(val));
-    }
+    /* ---------- HELPERS ---------- */
+    function cryptoId(){ return 'id-' + Math.random().toString(36).slice(2,9); }
+    function getLS(key){ const raw = localStorage.getItem(key); if(!raw) return null; try { return JSON.parse(raw); } catch { return null; } }
+    function setLS(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+    function addLog(text){ const logs = getLS(LS_KEYS.logs) || []; logs.unshift({id: cryptoId(), text, t: new Date().toISOString()}); setLS(LS_KEYS.logs, logs.slice(0,50)); renderAdminLog(); }
 
     function ensureDefaults(){
-      if (!getLS(LS_KEYS.news)) setLS(LS_KEYS.news, DEFAULT_NEWS);
-      if (!getLS(LS_KEYS.infoPT)) setLS(LS_KEYS.infoPT, DEFAULT_INFOPT);
-      if (!getLS(LS_KEYS.jobs)) setLS(LS_KEYS.jobs, DEFAULT_JOBS);
-      if (!getLS(LS_KEYS.staff)) setLS(LS_KEYS.staff, DEFAULT_STAFF);
+      if (!getLS(LS_KEYS.news)) setLS(LS_KEYS.news, DEFAULT_NEWS.slice());
+      if (!getLS(LS_KEYS.infoPT)) setLS(LS_KEYS.infoPT, DEFAULT_INFOPT.slice());
+      if (!getLS(LS_KEYS.jobs)) setLS(LS_KEYS.jobs, DEFAULT_JOBS.slice());
+      if (!getLS(LS_KEYS.staff)) setLS(LS_KEYS.staff, DEFAULT_STAFF.slice());
       if (!getLS(LS_KEYS.logs)) setLS(LS_KEYS.logs, []);
     }
 
-    function addLog(text){
-      const logs = getLS(LS_KEYS.logs) || [];
-      logs.unshift({id: cryptoId(), text, t: new Date().toISOString()});
-      setLS(LS_KEYS.logs, logs.slice(0,30));
-      renderAdminLog();
+    function escapeHtml(unsafe){
+      if (unsafe === null || unsafe === undefined) return '';
+      return String(unsafe)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'",'&#039;');
     }
 
-    /* ---------- RENDER FUNCTIONS (PUBLIC SITE) ---------- */
+    /* ---------- RENDER PUBLIC ---------- */
     function renderNews(){
-      const news = getLS(LS_KEYS.news) || [];
-      const grid = document.getElementById('newsGrid');
-      grid.innerHTML = '';
-      news.slice().reverse().forEach(item => {
-        const card = document.createElement('article');
-        card.className = 'bg-white rounded-xl shadow hover:shadow-lg transition p-4';
-        card.innerHTML = `
-          <img src="${item.image || 'https://source.unsplash.com/600x400/?students,school'}" alt="${escapeHtml(item.title)}" class="rounded-lg mb-3 w-full h-48 img-cover">
+      const news = (getLS(LS_KEYS.news) || []).slice().sort((a,b)=> (b.ts||0) - (a.ts||0));
+      const grid = document.getElementById('newsGrid'); grid.innerHTML = '';
+      news.forEach(item=>{
+        const el = document.createElement('article');
+        el.className = 'bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col';
+        el.innerHTML = `
+          <img src="${item.image || 'https://source.unsplash.com/800x450/?students,school'}" alt="${escapeHtml(item.title)}" class="card-img mb-3">
           <h3 class="text-lg font-semibold text-green-700">${escapeHtml(item.title)}</h3>
-          <p class="text-sm text-gray-600 mt-1">${item.date || ''}</p>
-          <p class="text-sm mt-2 text-gray-700">${escapeHtml(item.excerpt || '')}</p>
+          <p class="text-xs text-gray-600 mt-1">${escapeHtml(item.date||'')}</p>
+          <p class="text-sm mt-2 text-gray-700 line-clamp-4">${escapeHtml(item.excerpt||'')}</p>
           <details class="mt-3">
             <summary class="cursor-pointer text-green-600 font-semibold hover:underline">Baca Selengkapnya →</summary>
             <div class="mt-2 text-sm text-gray-700">${item.content || ''}</div>
           </details>
         `;
-        grid.appendChild(card);
+        grid.appendChild(el);
       });
-      document.getElementById('countNews').textContent = news.length;
+      document.getElementById('countNews').textContent = (news.length||0);
     }
 
     function renderInfoPT(){
       const arr = getLS(LS_KEYS.infoPT) || [];
-      const grid = document.getElementById('infoPTGrid');
-      grid.innerHTML = '';
-      arr.forEach(item => {
+      const grid = document.getElementById('infoPTGrid'); grid.innerHTML = '';
+      arr.forEach(i=>{
         const card = document.createElement('div');
-        card.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition';
+        card.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition flex flex-col';
         card.innerHTML = `
-          <img src="${item.image || 'https://source.unsplash.com/160x90/?university'}" class="h-16 mb-3" alt="">
-          <h3 class="text-green-700 font-semibold text-lg">${escapeHtml(item.title)}</h3>
-          <p class="text-sm text-gray-700 mt-2">${escapeHtml(item.excerpt || '')}</p>
-          <a href="${item.link || '#'}" target="_blank" class="inline-block mt-3 text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold">Info</a>
+          <img src="${i.image || 'https://source.unsplash.com/160x90/?university'}" class="h-16 mb-3 w-20 object-contain" alt="">
+          <h3 class="text-green-700 font-semibold text-lg">${escapeHtml(i.title)}</h3>
+          <p class="text-sm text-gray-700 mt-2">${escapeHtml(i.excerpt||'')}</p>
+          <a href="${i.link||'#'}" target="_blank" class="inline-block mt-3 text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold">Info</a>
         `;
         grid.appendChild(card);
       });
@@ -430,16 +461,15 @@
 
     function renderJobs(){
       const arr = getLS(LS_KEYS.jobs) || [];
-      const grid = document.getElementById('jobsGrid');
-      grid.innerHTML = '';
-      arr.forEach(item => {
+      const grid = document.getElementById('jobsGrid'); grid.innerHTML = '';
+      arr.forEach(i=>{
         const card = document.createElement('div');
-        card.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition';
+        card.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition flex flex-col items-start';
         card.innerHTML = `
-          <img src="${item.image || 'https://source.unsplash.com/160x90/?office,work'}" class="h-14 mb-3" alt="">
-          <h3 class="text-green-700 font-semibold text-lg">${escapeHtml(item.title)}</h3>
-          <p class="text-sm text-gray-700 mt-2">${escapeHtml(item.excerpt || '')}</p>
-          <a href="${item.link || '#'}" target="_blank" class="inline-block mt-3 text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold">Apply</a>
+          <img src="${i.image || 'https://source.unsplash.com/160x90/?office,work'}" class="h-16 mb-3 w-20 object-contain" alt="Logo Perusahaan">
+          <h3 class="text-green-700 font-semibold text-lg">${escapeHtml(i.title)}</h3>
+          <p class="text-sm text-gray-700 mt-2">${escapeHtml(i.excerpt||'')}</p>
+          <a href="${i.link||'#'}" target="_blank" class="inline-block mt-3 text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg font-semibold">Apply</a>
         `;
         grid.appendChild(card);
       });
@@ -448,16 +478,17 @@
 
     function renderStaff(){
       const arr = getLS(LS_KEYS.staff) || [];
-      const grid = document.getElementById('staffGrid');
-      grid.innerHTML = '';
-      arr.forEach(item => {
+      const grid = document.getElementById('staffGrid'); grid.innerHTML = '';
+      arr.forEach(i=>{
         const col = document.createElement('div');
-        col.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition';
+        col.className = 'bg-white p-5 rounded-xl shadow hover:shadow-lg transition flex flex-col items-center';
+        const waBtn = i.wa ? `<a href="https://wa.me/${i.wa}" target="_blank" class="mt-3 inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold"><i class='fab fa-whatsapp mr-2'></i>Hubungi via WhatsApp</a>` : '';
         col.innerHTML = `
-          <img src="${item.image || 'https://source.unsplash.com/200x200/?person'}" class="mx-auto rounded-full h-28 w-28 object-cover border-4 border-green-600 mb-3">
-          <h4 class="text-green-700 font-semibold">${escapeHtml(item.name)}</h4>
-          <p class="text-sm text-gray-700">${escapeHtml(item.role)}</p>
-          <p class="text-sm text-gray-600 mt-2">${escapeHtml(item.desc || '')}</p>
+          <img src="${i.image || 'https://source.unsplash.com/200x200/?person'}" class="rounded-circle h-28 w-28 border-4 border-green-600 mb-3" alt="">
+          <h4 class="text-green-700 font-semibold">${escapeHtml(i.name)}</h4>
+          <p class="text-sm text-gray-700">${escapeHtml(i.role||'')}</p>
+          ${waBtn}
+          <p class="text-sm text-gray-600 mt-2">${escapeHtml(i.desc||'')}</p>
         `;
         grid.appendChild(col);
       });
@@ -467,27 +498,27 @@
     function renderAdminLog(){
       const logs = getLS(LS_KEYS.logs) || [];
       const ul = document.getElementById('adminLog');
-      ul.innerHTML = logs.map(l => `<li>${escapeHtml(l.text)} <span class="text-xs text-gray-400">· ${new Date(l.t).toLocaleString()}</span></li>`).join('');
+      ul.innerHTML = logs.slice(0,30).map(l => `<li>${escapeHtml(l.text)} <span class="text-xs text-gray-400">· ${new Date(l.t).toLocaleString()}</span></li>`).join('');
     }
 
     function renderNewsList(){
-      const arr = getLS(LS_KEYS.news) || [];
+      const arr = (getLS(LS_KEYS.news) || []).slice().sort((a,b)=> (b.ts||0)-(a.ts||0));
       const list = document.getElementById('newsList');
-      list.innerHTML = arr.slice().reverse().map(item => `
+      list.innerHTML = arr.map(item => `
         <div class="p-3 border rounded-lg flex items-start gap-3">
           <img src="${item.image || 'https://source.unsplash.com/100x80/?students'}" class="h-20 w-28 object-cover rounded-md">
           <div class="flex-1">
             <div class="flex justify-between items-start">
               <div>
                 <div class="font-semibold">${escapeHtml(item.title)}</div>
-                <div class="text-xs text-gray-500">${item.date || ''}</div>
+                <div class="text-xs text-gray-500">${escapeHtml(item.date||'')}</div>
               </div>
               <div class="flex gap-2">
                 <button data-id="${item.id}" class="edit-news text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
                 <button data-id="${item.id}" class="del-news text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
               </div>
             </div>
-            <div class="text-sm text-gray-600 mt-2">${escapeHtml(item.excerpt || '')}</div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(item.excerpt||'')}</div>
           </div>
         </div>
       `).join('');
@@ -495,21 +526,21 @@
 
     function renderInfoList(){
       const arr = getLS(LS_KEYS.infoPT) || [];
-      document.getElementById('infoList').innerHTML = arr.slice().reverse().map(i => `
+      document.getElementById('infoList').innerHTML = arr.map(i=> `
         <div class="p-3 border rounded-lg flex items-start gap-3">
           <img src="${i.image || 'https://source.unsplash.com/100x80/?college'}" class="h-16 w-24 object-cover rounded-md">
           <div class="flex-1">
             <div class="flex justify-between items-start">
               <div>
                 <div class="font-semibold">${escapeHtml(i.title)}</div>
-                <div class="text-xs text-gray-500">${i.link || ''}</div>
+                <div class="text-xs text-gray-500">${escapeHtml(i.link||'')}</div>
               </div>
               <div class="flex gap-2">
                 <button data-id="${i.id}" class="edit-info text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
                 <button data-id="${i.id}" class="del-info text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
               </div>
             </div>
-            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.excerpt || '')}</div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.excerpt||'')}</div>
           </div>
         </div>
       `).join('');
@@ -517,21 +548,21 @@
 
     function renderJobList(){
       const arr = getLS(LS_KEYS.jobs) || [];
-      document.getElementById('jobList').innerHTML = arr.slice().reverse().map(i => `
+      document.getElementById('jobList').innerHTML = arr.map(i=> `
         <div class="p-3 border rounded-lg flex items-start gap-3">
           <img src="${i.image || 'https://source.unsplash.com/100x80/?office'}" class="h-16 w-24 object-cover rounded-md">
           <div class="flex-1">
             <div class="flex justify-between items-start">
               <div>
                 <div class="font-semibold">${escapeHtml(i.title)}</div>
-                <div class="text-xs text-gray-500">${escapeHtml(i.company || '')}</div>
+                <div class="text-xs text-gray-500">${escapeHtml(i.company||'')}</div>
               </div>
               <div class="flex gap-2">
                 <button data-id="${i.id}" class="edit-job text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
                 <button data-id="${i.id}" class="del-job text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
               </div>
             </div>
-            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.excerpt || '')}</div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.excerpt||'')}</div>
           </div>
         </div>
       `).join('');
@@ -539,116 +570,90 @@
 
     function renderStaffList(){
       const arr = getLS(LS_KEYS.staff) || [];
-      document.getElementById('staffList').innerHTML = arr.slice().reverse().map(i => `
+      document.getElementById('staffList').innerHTML = arr.map(i=> `
         <div class="p-3 border rounded-lg flex items-start gap-3">
           <img src="${i.image || 'https://source.unsplash.com/100x100/?person'}" class="h-16 w-16 object-cover rounded-full">
           <div class="flex-1">
             <div class="flex justify-between items-start">
               <div>
                 <div class="font-semibold">${escapeHtml(i.name)}</div>
-                <div class="text-xs text-gray-500">${escapeHtml(i.role || '')}</div>
+                <div class="text-xs text-gray-500">${escapeHtml(i.role||'')}</div>
+                <div class="text-xs text-gray-400 mt-1">WA: ${escapeHtml(i.wa||'-')}</div>
               </div>
               <div class="flex gap-2">
                 <button data-id="${i.id}" class="edit-staff text-sm bg-yellow-100 text-yellow-700 px-3 py-1 rounded">Edit</button>
                 <button data-id="${i.id}" class="del-staff text-sm bg-red-100 text-red-700 px-3 py-1 rounded">Hapus</button>
               </div>
             </div>
-            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.desc || '')}</div>
+            <div class="text-sm text-gray-600 mt-2">${escapeHtml(i.desc||'')}</div>
           </div>
         </div>
       `).join('');
     }
 
-    /* ---------- UTILS ---------- */
-    function escapeHtml(unsafe) {
-      if (!unsafe && unsafe !== 0) return '';
-      return String(unsafe)
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'",'&#039;');
-    }
-
-    /* ---------- ADMIN: EVENTS & ACTIONS ---------- */
-    // login logic
-    const ADMIN_ACCOUNT = {user: 'iqbal', pass: 'iqbal123'};
+    /* ---------- ADMIN ACTIONS ---------- */
+    const ADMIN_ACCOUNT = {user: 'admin', pass: 'admin123'}; // bisa diganti
 
     document.getElementById('btn-admin-open').addEventListener('click', (e)=>{
       e.preventDefault();
       document.getElementById('loginModal').classList.remove('hidden');
       document.getElementById('loginModal').classList.add('flex');
     });
-    document.getElementById('loginClose').addEventListener('click', ()=> hideLogin());
+    document.getElementById('loginClose').addEventListener('click', hideLogin);
     function hideLogin(){ document.getElementById('loginModal').classList.add('hidden'); document.getElementById('loginModal').classList.remove('flex'); }
 
     document.getElementById('loginBtn').addEventListener('click', ()=>{
       const u = document.getElementById('loginUser').value.trim();
       const p = document.getElementById('loginPass').value.trim();
       if(u === ADMIN_ACCOUNT.user && p === ADMIN_ACCOUNT.pass){
-        hideLogin();
-        openAdmin();
-        addLog('Admin logged in');
-      } else {
-        alert('Username atau password salah.');
-      }
+        hideLogin(); openAdmin(); addLog('Admin logged in');
+      } else alert('Username atau password salah.');
     });
 
     function openAdmin(){
       document.getElementById('adminPanel').style.display = 'block';
       document.getElementById('adminName').textContent = ADMIN_ACCOUNT.user;
-      showAdminSection('dash');
-      renderAllAdmin();
-      window.scrollTo({top:0, behavior:'smooth'});
+      showAdminSection('dash'); renderAllAdmin(); window.scrollTo({top:0, behavior:'smooth'});
     }
-
-    document.getElementById('btnLogout').addEventListener('click', () => {
+    document.getElementById('btnLogout').addEventListener('click', ()=>{
       document.getElementById('adminPanel').style.display = 'none';
       addLog('Admin logged out');
     });
 
-    // sidebar menu
     document.querySelectorAll('.admin-menu').forEach(btn=>{
-      btn.addEventListener('click', ()=> {
-        const s = btn.getAttribute('data-section');
-        showAdminSection(s);
-      });
+      btn.addEventListener('click', ()=> showAdminSection(btn.getAttribute('data-section')));
     });
 
     function showAdminSection(section){
       document.querySelectorAll('.admin-section').forEach(el=> el.classList.add('hidden'));
-      document.getElementById('admin-dash').classList.add('hidden');
-      document.getElementById('admin-berita').classList.add('hidden');
-      document.getElementById('admin-infopt').classList.add('hidden');
-      document.getElementById('admin-lowongan').classList.add('hidden');
-      document.getElementById('admin-pengurus').classList.add('hidden');
-      if(section === 'dash') document.getElementById('admin-dash').classList.remove('hidden');
-      if(section === 'berita') document.getElementById('admin-berita').classList.remove('hidden');
-      if(section === 'infopt') document.getElementById('admin-infopt').classList.remove('hidden');
-      if(section === 'lowongan') document.getElementById('admin-lowongan').classList.remove('hidden');
-      if(section === 'pengurus') document.getElementById('admin-pengurus').classList.remove('hidden');
+      document.getElementById('admin-dash').classList.toggle('hidden', section !== 'dash');
+      document.getElementById('admin-berita').classList.toggle('hidden', section !== 'berita');
+      document.getElementById('admin-infopt').classList.toggle('hidden', section !== 'infopt');
+      document.getElementById('admin-lowongan').classList.toggle('hidden', section !== 'lowongan');
+      document.getElementById('admin-pengurus').classList.toggle('hidden', section !== 'pengurus');
     }
 
-    // render all admin lists
     function renderAllAdmin(){
+      // Pastikan berita selalu diurutkan terbaru dulu
+      let news = getLS(LS_KEYS.news) || [];
+      news.sort((a,b)=> (b.ts||0)-(a.ts||0));
+      setLS(LS_KEYS.news, news);
+
       renderNewsList(); renderInfoList(); renderJobList(); renderStaffList(); renderAdminLog();
-      // also update frontpage
+      // public
       renderNews(); renderInfoPT(); renderJobs(); renderStaff();
-      // attach admin handlers
       attachAdminHandlers();
     }
 
-    // NEW / EDIT / DELETE handlers for news
+    // News handlers
     document.getElementById('btnNewNews').addEventListener('click', ()=> {
       document.getElementById('formNews').classList.remove('hidden');
-      document.getElementById('newsId').value = '';
-      document.getElementById('newsTitle').value = '';
-      document.getElementById('newsDate').value = new Date().toISOString().slice(0,10);
-      document.getElementById('newsImage').value = '';
-      document.getElementById('newsExcerpt').value = '';
-      document.getElementById('newsContent').value = '';
+      document.getElementById('newsId').value=''; document.getElementById('newsTitle').value=''; document.getElementById('newsDate').value=new Date().toISOString().slice(0,10);
+      document.getElementById('newsImage').value=''; document.getElementById('newsExcerpt').value=''; document.getElementById('newsContent').value='';
+      window.scrollTo({top:0, behavior:'smooth'});
     });
     document.getElementById('btnCancelNews').addEventListener('click', ()=> document.getElementById('formNews').classList.add('hidden'));
+    document.getElementById('btnCloseNewsPanel').addEventListener('click', ()=> showAdminSection('dash'));
 
     document.getElementById('formNews').addEventListener('submit', (e)=>{
       e.preventDefault();
@@ -659,58 +664,62 @@
       const excerpt = document.getElementById('newsExcerpt').value.trim();
       const content = document.getElementById('newsContent').value.trim();
       let arr = getLS(LS_KEYS.news) || [];
-      const obj = { id, title, date, image, excerpt, content };
+      const ts = Date.now();
+      const obj = { id, title, date, image, excerpt, content, ts };
       const exists = arr.find(i=>i.id===id);
       if(exists){
-        arr = arr.map(i=> i.id===id ? obj : i);
+        arr = arr.map(i=> i.id===id ? {...exists, ...obj} : i);
         addLog('Edit berita: ' + title);
       } else {
         arr.push(obj);
         addLog('Tambah berita: ' + title);
       }
+      // sort newest first by ts
+      arr.sort((a,b)=> (b.ts||0) - (a.ts||0));
       setLS(LS_KEYS.news, arr);
       document.getElementById('formNews').classList.add('hidden');
       renderAllAdmin();
+      showAdminSection('berita');
     });
 
     function attachAdminHandlers(){
-      // edit news
+      // attach edit/delete buttons (news)
       document.querySelectorAll('.edit-news').forEach(btn=>{
-        btn.addEventListener('click', (e)=>{
+        btn.onclick = ()=>{
           const id = btn.getAttribute('data-id');
           const arr = getLS(LS_KEYS.news) || [];
-          const item = arr.find(i=>i.id===id);
-          if(!item) return;
+          const it = arr.find(i=>i.id===id);
+          if(!it) return;
           document.getElementById('formNews').classList.remove('hidden');
-          document.getElementById('newsId').value = item.id;
-          document.getElementById('newsTitle').value = item.title;
-          document.getElementById('newsDate').value = item.date || '';
-          document.getElementById('newsImage').value = item.image || '';
-          document.getElementById('newsExcerpt').value = item.excerpt || '';
-          document.getElementById('newsContent').value = item.content || '';
-        });
+          document.getElementById('newsId').value = it.id;
+          document.getElementById('newsTitle').value = it.title;
+          document.getElementById('newsDate').value = it.date || '';
+          document.getElementById('newsImage').value = it.image || '';
+          document.getElementById('newsExcerpt').value = it.excerpt || '';
+          document.getElementById('newsContent').value = it.content || '';
+          window.scrollTo({top:0, behavior:'smooth'});
+        };
       });
-      // delete news
       document.querySelectorAll('.del-news').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+        btn.onclick = ()=>{
           if(!confirm('Hapus berita ini?')) return;
           const id = btn.getAttribute('data-id');
           let arr = getLS(LS_KEYS.news) || [];
-          const item = arr.find(i=>i.id===id);
+          const it = arr.find(i=>i.id===id);
           arr = arr.filter(i=>i.id!==id);
           setLS(LS_KEYS.news, arr);
-          addLog('Hapus berita: ' + (item ? item.title : id));
+          addLog('Hapus berita: '+ (it ? it.title : id));
           renderAllAdmin();
-        });
+        };
       });
 
-      // INFO PT Handlers
-      document.getElementById('btnNewInfoPT').addEventListener('click', ()=> {
+      // Info PT handlers
+      document.getElementById('btnNewInfoPT').onclick = ()=>{
         document.getElementById('formInfoPT').classList.remove('hidden');
         document.getElementById('infoId').value=''; document.getElementById('infoTitle').value=''; document.getElementById('infoLink').value=''; document.getElementById('infoImage').value=''; document.getElementById('infoExcerpt').value='';
-      });
-      document.getElementById('btnCancelInfo').addEventListener('click', ()=> document.getElementById('formInfoPT').classList.add('hidden'));
-      document.getElementById('formInfoPT').addEventListener('submit', (e)=>{
+      };
+      document.getElementById('btnCancelInfo').onclick = ()=> document.getElementById('formInfoPT').classList.add('hidden');
+      document.getElementById('formInfoPT').onsubmit = (e)=>{
         e.preventDefault();
         const id = document.getElementById('infoId').value || cryptoId();
         const title = document.getElementById('infoTitle').value.trim();
@@ -725,11 +734,9 @@
         addLog('Simpan Info PT: ' + title);
         document.getElementById('formInfoPT').classList.add('hidden');
         renderAllAdmin();
-      });
-
-      // edit/del info
+      };
       document.querySelectorAll('.edit-info').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+        btn.onclick = ()=>{
           const id = btn.getAttribute('data-id'); const arr = getLS(LS_KEYS.infoPT)||[]; const it = arr.find(i=>i.id===id);
           if(!it) return;
           document.getElementById('formInfoPT').classList.remove('hidden');
@@ -738,10 +745,10 @@
           document.getElementById('infoLink').value = it.link || '';
           document.getElementById('infoImage').value = it.image || '';
           document.getElementById('infoExcerpt').value = it.excerpt || '';
-        });
+        };
       });
       document.querySelectorAll('.del-info').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+        btn.onclick = ()=>{
           if(!confirm('Hapus info PT ini?')) return;
           const id = btn.getAttribute('data-id');
           let arr = getLS(LS_KEYS.infoPT) || [];
@@ -750,16 +757,16 @@
           setLS(LS_KEYS.infoPT, arr);
           addLog('Hapus Info PT: '+ (it ? it.title : id));
           renderAllAdmin();
-        });
+        };
       });
 
-      // JOB handlers
-      document.getElementById('btnNewJob').addEventListener('click', ()=> {
+      // Job handlers
+      document.getElementById('btnNewJob').onclick = ()=>{
         document.getElementById('formJob').classList.remove('hidden');
         document.getElementById('jobId').value=''; document.getElementById('jobTitle').value=''; document.getElementById('jobCompany').value=''; document.getElementById('jobImage').value=''; document.getElementById('jobLink').value=''; document.getElementById('jobExcerpt').value='';
-      });
-      document.getElementById('btnCancelJob').addEventListener('click', ()=> document.getElementById('formJob').classList.add('hidden'));
-      document.getElementById('formJob').addEventListener('submit', (e)=>{
+      };
+      document.getElementById('btnCancelJob').onclick = ()=> document.getElementById('formJob').classList.add('hidden');
+      document.getElementById('formJob').onsubmit = (e)=>{
         e.preventDefault();
         const id = document.getElementById('jobId').value || cryptoId();
         const title = document.getElementById('jobTitle').value.trim();
@@ -775,9 +782,9 @@
         addLog('Simpan lowongan: ' + title);
         document.getElementById('formJob').classList.add('hidden');
         renderAllAdmin();
-      });
+      };
       document.querySelectorAll('.edit-job').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+        btn.onclick = ()=>{
           const id = btn.getAttribute('data-id'); const arr = getLS(LS_KEYS.jobs)||[]; const it = arr.find(i=>i.id===id);
           if(!it) return;
           document.getElementById('formJob').classList.remove('hidden');
@@ -787,10 +794,10 @@
           document.getElementById('jobImage').value = it.image || '';
           document.getElementById('jobLink').value = it.link || '';
           document.getElementById('jobExcerpt').value = it.excerpt || '';
-        });
+        };
       });
       document.querySelectorAll('.del-job').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+        btn.onclick = ()=>{
           if(!confirm('Hapus lowongan ini?')) return;
           const id = btn.getAttribute('data-id');
           let arr = getLS(LS_KEYS.jobs) || [];
@@ -799,33 +806,34 @@
           setLS(LS_KEYS.jobs, arr);
           addLog('Hapus lowongan: '+ (it ? it.title : id));
           renderAllAdmin();
-        });
+        };
       });
 
-      // STAFF handlers
-      document.getElementById('btnNewStaff').addEventListener('click', ()=> {
+      // Staff handlers
+      document.getElementById('btnNewStaff').onclick = ()=>{
         document.getElementById('formStaff').classList.remove('hidden');
         document.getElementById('staffId').value=''; document.getElementById('staffName').value=''; document.getElementById('staffRole').value=''; document.getElementById('staffImage').value=''; document.getElementById('staffDesc').value='';
-      });
-      document.getElementById('btnCancelStaff').addEventListener('click', ()=> document.getElementById('formStaff').classList.add('hidden'));
-      document.getElementById('formStaff').addEventListener('submit', (e)=>{
+      };
+      document.getElementById('btnCancelStaff').onclick = ()=> document.getElementById('formStaff').classList.add('hidden');
+      document.getElementById('formStaff').onsubmit = (e)=>{
         e.preventDefault();
         const id = document.getElementById('staffId').value || cryptoId();
         const name = document.getElementById('staffName').value.trim();
         const role = document.getElementById('staffRole').value.trim();
         const image = document.getElementById('staffImage').value.trim();
+        const wa = document.getElementById('staffWA').value.trim();
         const desc = document.getElementById('staffDesc').value.trim();
         let arr = getLS(LS_KEYS.staff) || [];
-        const obj = { id, name, role, image, desc };
+        const obj = { id, name, role, image, desc, wa };
         if(arr.find(i=>i.id===id)) arr = arr.map(i=> i.id===id ? obj : i);
         else arr.push(obj);
         setLS(LS_KEYS.staff, arr);
         addLog('Simpan pengurus: ' + name);
         document.getElementById('formStaff').classList.add('hidden');
         renderAllAdmin();
-      });
+      };
       document.querySelectorAll('.edit-staff').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+        btn.onclick = ()=>{
           const id = btn.getAttribute('data-id'); const arr = getLS(LS_KEYS.staff)||[]; const it = arr.find(i=>i.id===id);
           if(!it) return;
           document.getElementById('formStaff').classList.remove('hidden');
@@ -833,11 +841,12 @@
           document.getElementById('staffName').value = it.name || '';
           document.getElementById('staffRole').value = it.role || '';
           document.getElementById('staffImage').value = it.image || '';
+          document.getElementById('staffWA').value = it.wa || '';
           document.getElementById('staffDesc').value = it.desc || '';
-        });
+        };
       });
       document.querySelectorAll('.del-staff').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+        btn.onclick = ()=>{
           if(!confirm('Hapus pengurus ini?')) return;
           const id = btn.getAttribute('data-id');
           let arr = getLS(LS_KEYS.staff) || [];
@@ -846,16 +855,17 @@
           setLS(LS_KEYS.staff, arr);
           addLog('Hapus pengurus: '+ (it ? it.name : id));
           renderAllAdmin();
-        });
+        };
       });
 
-      // export & reset
-      document.getElementById('btnExport').addEventListener('click', ()=>{
+      // Export & Import & Reset
+      document.getElementById('btnExport').onclick = ()=>{
         const data = {
           news: getLS(LS_KEYS.news) || [],
           infoPT: getLS(LS_KEYS.infoPT) || [],
           jobs: getLS(LS_KEYS.jobs) || [],
-          staff: getLS(LS_KEYS.staff) || []
+          staff: getLS(LS_KEYS.staff) || [],
+          logs: getLS(LS_KEYS.logs) || []
         };
         const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
         const a = document.createElement('a');
@@ -864,14 +874,36 @@
         a.click();
         URL.revokeObjectURL(a.href);
         addLog('Export data JSON');
-      });
+      };
 
-      document.getElementById('btnReset').addEventListener('click', ()=>{
-        if(!confirm('Reset semua data ke default?')) return;
-        localStorage.removeItem(LS_KEYS.news); localStorage.removeItem(LS_KEYS.infoPT); localStorage.removeItem(LS_KEYS.jobs); localStorage.removeItem(LS_KEYS.staff);
-        ensureDefaults(); addLog('Reset data ke default');
-        renderAllAdmin();
-      });
+      document.getElementById('importFile').onchange = (e)=>{
+        const f = e.target.files[0];
+        if(!f) return;
+        const reader = new FileReader();
+        reader.onload = (ev)=>{
+          try{
+            const obj = JSON.parse(ev.target.result);
+            if(obj.news) setLS(LS_KEYS.news, obj.news);
+            if(obj.infoPT) setLS(LS_KEYS.infoPT, obj.infoPT);
+            if(obj.jobs) setLS(LS_KEYS.jobs, obj.jobs);
+            if(obj.staff) setLS(LS_KEYS.staff, obj.staff);
+            if(obj.logs) setLS(LS_KEYS.logs, obj.logs);
+            addLog('Import data JSON');
+            renderAllAdmin();
+            alert('Import berhasil.');
+          } catch(err){
+            alert('Gagal membaca file JSON: ' + err.message);
+          }
+        };
+        reader.readAsText(f);
+        e.target.value = '';
+      };
+
+      document.getElementById('btnReset').onclick = ()=>{
+        if(!confirm('Reset semua data ke default? Ini akan menimpa data saat ini.')) return;
+        localStorage.removeItem(LS_KEYS.news); localStorage.removeItem(LS_KEYS.infoPT); localStorage.removeItem(LS_KEYS.jobs); localStorage.removeItem(LS_KEYS.staff); localStorage.removeItem(LS_KEYS.logs);
+        ensureDefaults(); addLog('Reset data ke default'); renderAllAdmin();
+      };
     } // end attachAdminHandlers
 
     /* ---------- NAVBAR active on scroll & back to top ---------- */
@@ -880,7 +912,7 @@
     window.addEventListener("scroll", () => {
       let current = '';
       sections.forEach(section => {
-        const top = section.offsetTop - 140;
+        const top = section.offsetTop - 160;
         if (scrollY >= top) current = section.getAttribute('id');
       });
       navLinks.forEach(link => {
@@ -888,7 +920,6 @@
         if (link.getAttribute('href') === `#${current}`) link.classList.add('nav-active');
       });
 
-      // back to top
       const toTop = document.getElementById('toTop');
       if (window.scrollY > 500) toTop.classList.remove('hidden'); else toTop.classList.add('hidden');
     });
